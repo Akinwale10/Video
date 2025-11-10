@@ -10,6 +10,14 @@ This repository contains complete production documentation for *Frankenstein: Fi
 
 ## Documentation
 
+### 🎥 [Animatic Video](Frankenstein_FirstBreath_Animatic.mp4) | [Guide](ANIMATIC_README.md)
+**NEW!** Storyboard animatic - a 2-minute slideshow preview of all 18 shots:
+- Visual representation of the complete shot sequence
+- Shot-by-shot storyboards with descriptions
+- Timecodes and technical specifications for each shot
+- 1920x804 (2.39:1) at 24fps | 1.1 MB file size
+- Ready to download and share with production team
+
 ### 📋 [Main Treatment](FRANKENSTEIN_FIRST_BREATH_TREATMENT.md)
 The complete production bible including:
 - Full shot list with storyboard descriptions (18 shots)
