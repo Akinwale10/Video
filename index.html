@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OMOOLA PHARMACY & STORES - Medicines & Groceries Delivered Fast</title>
+    <meta name="description" content="Upload your prescription or shop groceries. Trusted pharmacy care, same-day delivery.">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="styles.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E💊%3C/text%3E%3C/svg%3E">
+</head>
+<body>
+    <!-- Top Navigation -->
+    <nav class="main-nav" id="mainNav">
+        <div class="nav-container">
+            <!-- Logo -->
+            <div class="nav-logo">
+                <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                    <rect x="13" y="8" width="6" height="16" rx="1" fill="#6A4CFF"/>
+                    <rect x="8" y="13" width="16" height="6" rx="1" fill="#FF7A00"/>
+                    <circle cx="16" cy="16" r="14" stroke="#6A4CFF" stroke-width="2" fill="none"/>
+                </svg>
+                <span class="logo-text">OMOOLA</span>
+            </div>
+
+            <!-- Search Bar -->
+            <div class="nav-search">
+                <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <path d="m21 21-4.35-4.35"></path>
+                </svg>
+                <input type="text" id="navSearchInput" placeholder="Search medicines, groceries or upload prescription" autocomplete="off">
+                <div class="search-suggestions" id="searchSuggestions"></div>
+            </div>
+
+            <!-- Navigation Links -->
+            <div class="nav-links">
+                <a href="#categories" class="nav-link">Categories</a>
+                <a href="#offers" class="nav-link">Offers</a>
+                <a href="#" class="nav-link">Account</a>
+            </div>
+
+            <!-- Cart Icon -->
+            <button class="cart-button" id="cartButton" aria-label="Shopping cart">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M9 2L7.17 5H2v2h20V5h-5.17L15 2H9z"></path>
+                    <path d="M5 7v13a2 2 0 002 2h10a2 2 0 002-2V7H5z"></path>
+                </svg>
+                <span class="cart-badge" id="cartBadge">0</span>
+            </button>
+
+            <!-- Mobile Menu Toggle -->
+            <button class="mobile-menu-toggle" id="mobileMenuToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Everyday essentials — medicines & groceries delivered fast</h1>
+                <p class="hero-subtitle">Upload your prescription or shop groceries. Trusted pharmacy care, same-day delivery.</p>
+                
+                <!-- Hero Search -->
+                <div class="hero-search">
+                    <svg class="search-icon" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                    <input type="text" id="heroSearchInput" placeholder="Search medicines, groceries or upload prescription" autocomplete="off">
+                    <button class="upload-rx-btn" id="uploadRxBtn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+                            <polyline points="17 8 12 3 7 8"></polyline>
+                            <line x1="12" y1="3" x2="12" y2="15"></line>
+                        </svg>
+                        Upload Rx
+                    </button>
+                </div>
+
+                <!-- CTA Buttons -->
+                <div class="hero-ctas">
+                    <button class="btn btn-primary">Shop Now</button>
+                    <button class="btn btn-secondary" id="heroUploadBtn">Upload Prescription</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Carousel -->
+    <section class="categories-section" id="categories">
+        <div class="container">
+            <h2 class="section-title">Shop by Category</h2>
+            <div class="categories-carousel">
+                <button class="carousel-nav prev" id="categoriesPrev" aria-label="Previous categories">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <div class="categories-wrapper" id="categoriesWrapper">
+                    <div class="category-card">
+                        <div class="category-icon">🍎</div>
+                        <span class="category-name">Fruits & Vegetables</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">💊</div>
+                        <span class="category-name">Pharmacy</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">🧴</div>
+                        <span class="category-name">Personal Care</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">👶</div>
+                        <span class="category-name">Baby Products</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">🏠</div>
+                        <span class="category-name">Household</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">🥗</div>
+                        <span class="category-name">Health Foods</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">💆</div>
+                        <span class="category-name">Beauty</span>
+                    </div>
+                    <div class="category-card">
+                        <div class="category-icon">🏋️</div>
+                        <span class="category-name">Fitness</span>
+                    </div>
+                </div>
+                <button class="carousel-nav next" id="categoriesNext" aria-label="Next categories">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Featured Banners -->
+    <section class="featured-section">
+        <div class="container">
+            <div class="featured-grid">
+                <div class="featured-card large">
+                    <div class="featured-content">
+                        <span class="featured-badge">Special Offer</span>
+                        <h3>Get 30% OFF on First Order</h3>
+                        <p>Use code: OMOOLA30 at checkout</p>
+                        <button class="btn btn-primary">Shop Now</button>
+                    </div>
+                    <div class="featured-image">
+                        <div class="placeholder-image">🎁</div>
+                    </div>
+                </div>
+                <div class="featured-cards-stack">
+                    <div class="featured-card small">
+                        <div class="featured-content">
+                            <h4>Same Day Delivery</h4>
+                            <p>Order before 2 PM</p>
+                        </div>
+                        <div class="featured-icon">🚚</div>
+                    </div>
+                    <div class="featured-card small">
+                        <div class="featured-content">
+                            <h4>Licensed Pharmacists</h4>
+                            <p>Expert consultation</p>
+                        </div>
+                        <div class="featured-icon">👨‍⚕️</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products-section" id="products">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Popular Medicines</h2>
+                <a href="#" class="view-all">View All →</a>
+            </div>
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Offers Section -->
+    <section class="products-section" id="offers">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Special Offers</h2>
+                <a href="#" class="view-all">View All →</a>
+            </div>
+            <div class="products-grid" id="offersGrid">
+                <!-- Offers will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+                            <rect x="13" y="8" width="6" height="16" rx="1" fill="#6A4CFF"/>
+                            <rect x="8" y="13" width="16" height="6" rx="1" fill="#FF7A00"/>
+                            <circle cx="16" cy="16" r="14" stroke="#6A4CFF" stroke-width="2" fill="none"/>
+                        </svg>
+                        <span>OMOOLA</span>
+                    </div>
+                    <p class="footer-desc">Your trusted pharmacy and grocery store. Quality medicines and everyday essentials delivered to your doorstep.</p>
+                    <div class="footer-license">
+                        <strong>Pharmacy License:</strong> PCN-NG-2024-001234
+                    </div>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Our Pharmacists</a></li>
+                        <li><a href="#">Store Locator</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Customer Service</h4>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Track Order</a></li>
+                        <li><a href="#">Return Policy</a></li>
+                        <li><a href="#">FAQs</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Prescription Policy</a></li>
+                        <li><a href="#">Disclaimer</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Newsletter</h4>
+                    <p>Get health tips and exclusive offers</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Enter your email" required>
+                        <button type="submit" class="btn btn-primary">Subscribe</button>
+                    </form>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p class="footer-disclaimer">
+                    <strong>Disclaimer:</strong> Always read labels and instructions. Consult your healthcare provider before starting any medication. Prescription medications require valid prescription from licensed healthcare provider.
+                </p>
+                <p class="footer-copyright">© 2024 OMOOLA PHARMACY & STORES. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Drawer -->
+    <div class="cart-drawer" id="cartDrawer">
+        <div class="cart-header">
+            <h3>Shopping Cart</h3>
+            <button class="cart-close" id="cartClose" aria-label="Close cart">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="cart-items" id="cartItems">
+            <!-- Cart items will be inserted here -->
+        </div>
+        
+        <div class="cart-footer">
+            <div class="cart-coupon">
+                <input type="text" placeholder="Enter coupon code" id="couponInput">
+                <button class="btn btn-secondary">Apply</button>
+            </div>
+            
+            <div class="cart-rx-verification">
+                <label class="checkbox-label">
+                    <input type="checkbox" id="hasRxCheckbox">
+                    <span>I have a valid prescription</span>
+                </label>
+                <button class="link-btn" id="uploadRxLink">Upload Prescription</button>
+            </div>
+            
+            <div class="cart-total">
+                <span>Total:</span>
+                <span class="cart-total-amount" id="cartTotal">₦0</span>
+            </div>
+            
+            <button class="btn btn-primary btn-block" id="checkoutBtn">Proceed to Checkout</button>
+        </div>
+    </div>
+
+    <!-- Prescription Upload Modal -->
+    <div class="modal" id="rxModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Upload Prescription</h3>
+                <button class="modal-close" id="rxModalClose" aria-label="Close modal">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            
+            <div class="modal-body">
+                <div class="upload-area" id="uploadArea">
+                    <svg class="upload-icon" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <p>Drag and drop your prescription or click to browse</p>
+                    <input type="file" id="rxFileInput" accept="image/*,.pdf" hidden>
+                    <button class="btn btn-secondary" id="browseBtn">Browse Files</button>
+                </div>
+                
+                <div class="upload-preview" id="uploadPreview" style="display: none;">
+                    <img id="previewImage" alt="Prescription preview">
+                    <div class="upload-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill" id="progressFill"></div>
+                        </div>
+                        <span id="progressText">Uploading... 0%</span>
+                    </div>
+                </div>
+                
+                <form class="rx-form" id="rxForm">
+                    <div class="form-group">
+                        <label for="patientName">Patient Name *</label>
+                        <input type="text" id="patientName" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="patientPhone">Phone Number *</label>
+                        <input type="tel" id="patientPhone" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label>Delivery Preference *</label>
+                        <div class="radio-group">
+                            <label class="radio-label">
+                                <input type="radio" name="delivery" value="delivery" checked>
+                                <span>Home Delivery</span>
+                            </label>
+                            <label class="radio-label">
+                                <input type="radio" name="delivery" value="pickup">
+                                <span>Store Pickup</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="rxNotes">Message to Pharmacist (Optional)</label>
+                        <textarea id="rxNotes" rows="3" placeholder="Any special instructions or questions..."></textarea>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary btn-block">Submit Prescription</button>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay -->
+    <div class="overlay" id="overlay"></div>
+
+    <!-- Scripts -->
+    <script src="data.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
