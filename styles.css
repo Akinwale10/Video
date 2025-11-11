@@ -3,7 +3,7 @@
    =================================== */
 :root {
     /* Color Palette */
-    --primary-purple: #6A4CFF;
+    --primary-purple: #5839CC;
     --accent-orange: #FF7A00;
     --neutral-dark: #1F2937;
     --neutral-light: #F7F7FB;
@@ -205,6 +205,14 @@ input, textarea, select {
 .logo-text {
     font-size: 1.25rem;
     letter-spacing: -0.5px;
+}
+
+/* Mobile logo text - smaller to fit full name */
+@media (max-width: 767px) {
+    .logo-text {
+        font-size: 0.75rem;
+        white-space: nowrap;
+    }
 }
 
 .logo-tagline {
@@ -438,7 +446,7 @@ input, textarea, select {
     gap: var(--spacing-sm);
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 0.875rem;
     color: var(--primary-purple);
 }
 
@@ -1593,7 +1601,9 @@ input, textarea, select {
 
 /* Hide desktop elements on mobile */
 .nav-search {
-    display: none;
+    display: block;
+    max-width: 100%;
+    flex: 1;
 }
 
 .nav-links {
@@ -1611,6 +1621,30 @@ input, textarea, select {
 /* Mobile-optimized spacing */
 .container {
     padding: 0 var(--spacing-md);
+}
+
+/* Mobile navigation adjustments */
+@media (max-width: 767px) {
+    .nav-container {
+        flex-wrap: wrap;
+        gap: var(--spacing-sm);
+    }
+    
+    .nav-logo {
+        margin-right: 0;
+        flex: 0 0 auto;
+    }
+    
+    .nav-search {
+        order: 3;
+        width: 100%;
+        margin-top: var(--spacing-sm);
+    }
+    
+    .cart-button,
+    .mobile-menu-toggle {
+        order: 2;
+    }
 }
 
 .logo-tagline {
