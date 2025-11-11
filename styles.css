@@ -119,10 +119,10 @@ input, textarea, select {
     align-items: center;
     justify-content: center;
     gap: var(--spacing-sm);
-    padding: 0.875rem 2rem;
+    padding: 0.75rem 1.5rem;
     font-family: var(--font-heading);
     font-weight: 600;
-    font-size: 1rem;
+    font-size: 0.95rem;
     border-radius: var(--radius-full);
     transition: all var(--transition-base);
     white-space: nowrap;
@@ -184,8 +184,8 @@ input, textarea, select {
 .nav-container {
     display: flex;
     align-items: center;
-    gap: var(--spacing-lg);
-    padding: var(--spacing-md) var(--spacing-lg);
+    gap: var(--spacing-md);
+    padding: var(--spacing-md);
     max-width: 1280px;
     margin: 0 auto;
 }
@@ -196,15 +196,17 @@ input, textarea, select {
     gap: var(--spacing-sm);
     font-family: var(--font-heading);
     font-weight: 700;
-    font-size: 1.25rem;
+    font-size: 1.125rem;
     color: var(--primary-purple);
     flex-shrink: 0;
+    margin-right: auto;
 }
 
 .nav-search {
     position: relative;
     flex: 1;
     max-width: 500px;
+    margin: 0 auto;
 }
 
 .nav-search input {
@@ -1283,89 +1285,233 @@ input, textarea, select {
 }
 
 /* ===================================
-   Responsive Design
+   Responsive Design - MOBILE FIRST
    =================================== */
-@media (max-width: 1024px) {
-    .featured-grid {
-        grid-template-columns: 1fr;
-    }
-    
-    .carousel-nav {
-        display: none;
-    }
+
+/* Base styles are for mobile (320px+) */
+
+/* Hide desktop elements on mobile */
+.nav-search {
+    display: none;
 }
 
-@media (max-width: 768px) {
-    .nav-search {
-        display: none;
+.nav-links {
+    display: none;
+}
+
+.mobile-menu-toggle {
+    display: flex;
+}
+
+.carousel-nav {
+    display: none;
+}
+
+/* Mobile-optimized spacing */
+.container {
+    padding: 0 var(--spacing-md);
+}
+
+.hero-section {
+    padding: var(--spacing-xl) 0;
+}
+
+.section-title {
+    font-size: 1.5rem;
+}
+
+.hero-title {
+    font-size: 1.75rem;
+}
+
+.hero-subtitle {
+    font-size: 0.95rem;
+}
+
+.hero-ctas {
+    flex-direction: column;
+}
+
+.hero-ctas .btn {
+    width: 100%;
+}
+
+.upload-rx-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.875rem;
+}
+
+/* Mobile product grid - single column */
+.products-grid {
+    grid-template-columns: 1fr;
+}
+
+/* Mobile category cards */
+.category-card {
+    width: 120px;
+}
+
+/* Mobile featured section */
+.featured-grid {
+    grid-template-columns: 1fr;
+}
+
+.featured-card.large {
+    flex-direction: column;
+    text-align: center;
+}
+
+.featured-image {
+    font-size: 6rem;
+}
+
+/* Mobile cart */
+.cart-drawer {
+    max-width: 100%;
+}
+
+/* TABLET: 768px and up */
+@media (min-width: 768px) {
+    /* Tablet spacing */
+    .container {
+        padding: 0 var(--spacing-lg);
     }
     
-    .nav-links {
-        display: none;
+    /* Tablet navigation */
+    .nav-container {
+        gap: var(--spacing-lg);
+        padding: var(--spacing-md) var(--spacing-lg);
     }
     
-    .mobile-menu-toggle {
-        display: flex;
+    .nav-logo {
+        font-size: 1.25rem;
+        margin-right: 0;
+    }
+    
+    .hero-section {
+        padding: var(--spacing-2xl) 0;
+    }
+    
+    .section-title {
+        font-size: 1.75rem;
     }
     
     .hero-title {
-        font-size: 2rem;
+        font-size: 2.5rem;
     }
     
     .hero-subtitle {
-        font-size: 1rem;
+        font-size: 1.0625rem;
     }
     
-    .hero-ctas {
-        flex-direction: column;
+    /* Show nav search on tablet */
+    .nav-search {
+        display: block;
     }
     
-    .hero-ctas .btn {
-        width: 100%;
-    }
-    
+    /* Tablet product grid - 2 columns */
     .products-grid {
         grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     }
     
-    .featured-card.large {
-        flex-direction: column;
-        text-align: center;
-    }
-    
-    .featured-image {
-        font-size: 6rem;
-    }
-    
-    .cart-drawer {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .container {
-        padding: 0 var(--spacing-md);
-    }
-    
-    .hero-section {
-        padding: var(--spacing-xl) 0;
-    }
-    
-    .section-title {
-        font-size: 1.5rem;
-    }
-    
-    .products-grid {
-        grid-template-columns: 1fr;
-    }
-    
+    /* Tablet category cards */
     .category-card {
-        width: 120px;
+        width: 130px;
     }
     
     .upload-rx-btn {
-        padding: 0.5rem 1rem;
-        font-size: 0.875rem;
+        padding: 0.625rem 1.25rem;
+        font-size: 0.95rem;
+    }
+    
+    /* Tablet hero CTAs */
+    .hero-ctas {
+        flex-direction: row;
+        justify-content: center;
+    }
+    
+    .hero-ctas .btn {
+        width: auto;
+    }
+    
+    /* Tablet featured cards */
+    .featured-card.large {
+        flex-direction: row;
+        text-align: left;
+    }
+    
+    .featured-image {
+        font-size: 7rem;
+    }
+    
+    /* Tablet cart drawer */
+    .cart-drawer {
+        max-width: 450px;
+    }
+}
+
+/* DESKTOP: 1024px and up */
+@media (min-width: 1024px) {
+    /* Desktop spacing */
+    .hero-section {
+        padding: var(--spacing-3xl) 0;
+    }
+    
+    .section-title {
+        font-size: 2rem;
+    }
+    
+    .hero-title {
+        font-size: clamp(2rem, 5vw, 3.5rem);
+    }
+    
+    .hero-subtitle {
+        font-size: 1.125rem;
+    }
+    
+    /* Desktop buttons */
+    .btn {
+        padding: 0.875rem 2rem;
+        font-size: 1rem;
+    }
+    
+    /* Show desktop nav links */
+    .nav-links {
+        display: flex;
+    }
+    
+    /* Hide mobile menu toggle */
+    .mobile-menu-toggle {
+        display: none;
+    }
+    
+    /* Desktop product grid - 3-4 columns */
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+    
+    /* Desktop category cards */
+    .category-card {
+        width: 140px;
+    }
+    
+    /* Show carousel navigation */
+    .carousel-nav {
+        display: flex;
+    }
+    
+    .upload-rx-btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 1rem;
+    }
+    
+    /* Desktop featured grid - 2 columns */
+    .featured-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+    
+    .featured-image {
+        font-size: 8rem;
     }
 }
 
