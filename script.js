@@ -40,6 +40,14 @@ const categoriesNext = document.getElementById('categoriesNext');
 
 // Mobile menu
 const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+const mobileMenu = document.getElementById('mobileMenu');
+const mobileMenuClose = document.getElementById('mobileMenuClose');
+const categoriesDropdown = document.getElementById('categoriesDropdown');
+const categoriesSubmenu = document.getElementById('categoriesSubmenu');
+const mobileUploadRx = document.getElementById('mobileUploadRx');
+
+// Floating buttons
+const scrollTopBtn = document.getElementById('scrollTopBtn');
 
 // ===================================
 // Product Rendering
@@ -371,26 +379,80 @@ function handleSearch(input, suggestionsEl) {
             return;
         }
 
-        const filtered = searchSuggestions.filter(item => 
+        // Search in products and suggestions
+        const productMatches = [...products, ...offers].filter(item => 
+            item.name.toLowerCase().includes(query) ||
+            item.description.toLowerCase().includes(query) ||
+            item.category.toLowerCase().includes(query)
+        );
+
+        const suggestionMatches = searchSuggestions.filter(item => 
             item.toLowerCase().includes(query)
         );
 
-        if (filtered.length > 0) {
-            suggestionsEl.innerHTML = filtered.slice(0, 5).map(item => 
-                `<div class="suggestion-item">${item}</div>`
-            ).join('');
+        const allMatches = [
+            ...new Set([
+                ...productMatches.map(p => p.name),
+                ...suggestionMatches
+            ])
+        ];
+
+        if (allMatches.length > 0) {
+            suggestionsEl.innerHTML = allMatches.slice(0, 8).map((item, index) => {
+                const matchedProduct = productMatches.find(p => p.name === item);
+                if (matchedProduct) {
+                    return `
+                        <div class="suggestion-item suggestion-product" data-product-id="${matchedProduct.id}">
+                            <span class="suggestion-icon">${matchedProduct.image}</span>
+                            <div class="suggestion-details">
+                                <div class="suggestion-name">${highlightMatch(item, query)}</div>
+                                <div class="suggestion-price">₦${matchedProduct.price.toLocaleString()}</div>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    return `
+                        <div class="suggestion-item">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <path d="m21 21-4.35-4.35"></path>
+                            </svg>
+                            <span>${highlightMatch(item, query)}</span>
+                        </div>
+                    `;
+                }
+            }).join('');
             suggestionsEl.classList.add('active');
 
             // Add click handlers
             suggestionsEl.querySelectorAll('.suggestion-item').forEach(item => {
                 item.addEventListener('click', () => {
-                    input.value = item.textContent;
+                    const productId = item.dataset.productId;
+                    if (productId) {
+                        // Find and show product details
+                        const product = [...products, ...offers].find(p => p.id === parseInt(productId));
+                        if (product) {
+                            showProductDetails(product);
+                        }
+                    } else {
+                        input.value = item.textContent.trim();
+                        performSearch(item.textContent.trim());
+                    }
                     suggestionsEl.classList.remove('active');
-                    performSearch(item.textContent);
                 });
             });
         } else {
-            suggestionsEl.classList.remove('active');
+            suggestionsEl.innerHTML = `
+                <div class="suggestion-item suggestion-empty">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <span>No results found for "${query}"</span>
+                </div>
+            `;
+            suggestionsEl.classList.add('active');
         }
     });
 
@@ -400,6 +462,20 @@ function handleSearch(input, suggestionsEl) {
             performSearch(input.value);
         }
     });
+
+    // Clear button functionality
+    input.addEventListener('focus', () => {
+        if (input.value.length >= 2) {
+            const query = input.value.toLowerCase().trim();
+            // Trigger search to show suggestions
+            input.dispatchEvent(new Event('input'));
+        }
+    });
+}
+
+function highlightMatch(text, query) {
+    const regex = new RegExp(`(${query})`, 'gi');
+    return text.replace(regex, '<strong>$1</strong>');
 }
 
 function performSearch(query) {
@@ -522,6 +598,9 @@ cartClose?.addEventListener('click', closeCart);
 overlay?.addEventListener('click', () => {
     closeCart();
     closeRxModal();
+    // Close mobile menu
+    mobileMenuToggle?.classList.remove('active');
+    mobileMenu?.classList.remove('active');
 });
 
 uploadRxBtn?.addEventListener('click', openRxModal);
@@ -539,10 +618,56 @@ if (heroSearchInput) {
 
 // Mobile menu toggle
 mobileMenuToggle?.addEventListener('click', () => {
-    const navLinks = document.querySelector('.nav-links');
-    const navSearch = document.querySelector('.nav-search');
-    // Toggle mobile menu (implementation needed)
-    console.log('Mobile menu toggled');
+    mobileMenuToggle.classList.toggle('active');
+    mobileMenu?.classList.toggle('active');
+    overlay?.classList.toggle('active');
+});
+
+mobileMenuClose?.addEventListener('click', () => {
+    mobileMenuToggle?.classList.remove('active');
+    mobileMenu?.classList.remove('active');
+    overlay?.classList.remove('active');
+});
+
+// Categories dropdown in mobile menu
+categoriesDropdown?.addEventListener('click', () => {
+    categoriesDropdown.classList.toggle('active');
+    categoriesSubmenu?.classList.toggle('active');
+});
+
+// Mobile upload prescription
+mobileUploadRx?.addEventListener('click', () => {
+    mobileMenuToggle?.classList.remove('active');
+    mobileMenu?.classList.remove('active');
+    openRxModal();
+});
+
+// Scroll to top button
+let scrollTimeout;
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+    
+    if (scrollPosition > 300) {
+        if (scrollTopBtn && scrollTopBtn.style.display === 'none') {
+            scrollTopBtn.style.display = 'flex';
+        }
+    } else {
+        if (scrollTopBtn && scrollTopBtn.style.display !== 'none') {
+            scrollTopBtn.classList.add('hiding');
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                scrollTopBtn.style.display = 'none';
+                scrollTopBtn.classList.remove('hiding');
+            }, 300);
+        }
+    }
+});
+
+scrollTopBtn?.addEventListener('click', () => {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 });
 
 // Close dropdowns when clicking outside
