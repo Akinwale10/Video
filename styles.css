@@ -1812,6 +1812,48 @@ input, textarea, select {
     background: rgba(255, 255, 255, 0.1);
     border-radius: var(--radius-lg);
     font-size: 0.875rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Social Media Icons */
+.footer-social {
+    margin-top: var(--spacing-lg);
+}
+
+.footer-social h4 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-md);
+}
+
+.social-icons {
+    display: flex;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
+}
+
+.social-icon {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-lg);
+    color: var(--white);
+    transition: all var(--transition-base);
+}
+
+.social-icon:hover {
+    background: var(--primary-purple);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-lg);
+}
+
+.social-icon svg {
+    width: 20px;
+    height: 20px;
 }
 
 .footer-col h4 {
@@ -1835,6 +1877,11 @@ input, textarea, select {
 
 .footer-col ul li a:hover {
     color: var(--white);
+    text-decoration: underline;
+}
+
+.footer-link {
+    cursor: pointer;
 }
 
 .newsletter-form {
@@ -1866,6 +1913,47 @@ input, textarea, select {
     text-align: center;
 }
 
+/* Payment Methods Section */
+.footer-payment {
+    margin-bottom: var(--spacing-xl);
+}
+
+.footer-payment h4 {
+    font-family: var(--font-heading);
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: var(--spacing-md);
+    color: var(--gray-400);
+}
+
+.payment-icons {
+    display: flex;
+    gap: var(--spacing-lg);
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.payment-icon {
+    background: var(--white);
+    padding: var(--spacing-sm) var(--spacing-md);
+    border-radius: var(--radius-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-sm);
+}
+
+.payment-icon:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.payment-icon svg {
+    display: block;
+}
+
 .footer-disclaimer {
     font-size: 0.875rem;
     color: var(--gray-400);
@@ -1876,6 +1964,30 @@ input, textarea, select {
 .footer-copyright {
     font-size: 0.875rem;
     color: var(--gray-500);
+}
+
+.footer-copyright-extra {
+    display: inline-block;
+    margin-left: var(--spacing-sm);
+    color: var(--accent-orange);
+    font-weight: 500;
+}
+
+/* Responsive footer */
+@media (max-width: 768px) {
+    .footer-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .payment-icons {
+        gap: var(--spacing-md);
+    }
+    
+    .footer-copyright-extra {
+        display: block;
+        margin-left: 0;
+        margin-top: var(--spacing-xs);
+    }
 }
 
 /* ===================================
