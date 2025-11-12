@@ -27,6 +27,12 @@ const progressFill = document.getElementById('progressFill');
 const progressText = document.getElementById('progressText');
 const rxForm = document.getElementById('rxForm');
 
+// Footer info modal elements
+const footerInfoModal = document.getElementById('footerInfoModal');
+const footerInfoTitle = document.getElementById('footerInfoTitle');
+const footerInfoContent = document.getElementById('footerInfoContent');
+const footerInfoClose = document.getElementById('footerInfoClose');
+
 // Search elements
 const navSearchInput = document.getElementById('navSearchInput');
 const searchSuggestionsEl = document.getElementById('searchSuggestions');
@@ -600,6 +606,7 @@ cartClose?.addEventListener('click', closeCart);
 overlay?.addEventListener('click', () => {
     closeCart();
     closeRxModal();
+    closeFooterInfoModal();
     // Close mobile menu
     mobileMenuToggle?.classList.remove('active');
     mobileMenu?.classList.remove('active');
@@ -702,6 +709,342 @@ newsletterForm?.addEventListener('submit', (e) => {
 });
 
 // ===================================
+// Footer Information Modal
+// ===================================
+const footerInfo = {
+    about: {
+        title: "About Us",
+        content: `
+            <h4>Welcome to OMOOLA PHARMACY & STORES</h4>
+            <p>OMOOLA Pharmacy & Stores is your trusted healthcare partner, committed to providing quality medicines and everyday essentials with convenience and care. Established with a vision to make healthcare accessible to everyone, we combine traditional pharmacy values with modern technology.</p>
+            <p><strong>Our Mission:</strong> To deliver exceptional healthcare services and quality products to our community while ensuring affordability and accessibility.</p>
+            <p><strong>Our Vision:</strong> To become the most trusted name in healthcare delivery, bringing wellness to every doorstep.</p>
+            <p>We are licensed by the Pharmacists Council of Nigeria (PCN) and maintain the highest standards of pharmaceutical care.</p>
+        `
+    },
+    pharmacists: {
+        title: "Our Pharmacists",
+        content: `
+            <h4>Licensed & Experienced Professionals</h4>
+            <p>Our team consists of highly qualified and licensed pharmacists who are dedicated to your health and wellbeing. Each member of our pharmacy team is registered with the Pharmacists Council of Nigeria (PCN) and undergoes continuous professional development.</p>
+            <p><strong>What Our Pharmacists Offer:</strong></p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Free medication counseling and consultation</li>
+                <li>Prescription verification and drug interaction checks</li>
+                <li>Advice on over-the-counter medications</li>
+                <li>Health screening and wellness advice</li>
+                <li>Medication therapy management</li>
+            </ul>
+            <p>Available for consultation Monday - Saturday, 8:00 AM - 8:00 PM</p>
+        `
+    },
+    locator: {
+        title: "Store Locator",
+        content: `
+            <h4>Find a Store Near You</h4>
+            <p><strong>Main Branch:</strong><br>
+            123 Health Avenue, Ikeja, Lagos<br>
+            Phone: +234 801 234 5678<br>
+            Hours: Mon-Sat 8:00 AM - 8:00 PM, Sun 10:00 AM - 6:00 PM</p>
+            
+            <p><strong>Victoria Island Branch:</strong><br>
+            45 Wellness Road, Victoria Island, Lagos<br>
+            Phone: +234 802 345 6789<br>
+            Hours: Mon-Sat 8:00 AM - 8:00 PM, Sun 10:00 AM - 6:00 PM</p>
+            
+            <p><strong>Lekki Branch:</strong><br>
+            78 Care Street, Lekki Phase 1, Lagos<br>
+            Phone: +234 803 456 7890<br>
+            Hours: Mon-Sat 8:00 AM - 8:00 PM, Sun 10:00 AM - 6:00 PM</p>
+            
+            <p style="margin-top: 1rem; padding: 1rem; background: rgba(106, 76, 255, 0.1); border-radius: 8px;">
+                <strong>Delivery Available:</strong> We deliver to all locations across Lagos and neighboring states. Same-day delivery available for orders placed before 2 PM.
+            </p>
+        `
+    },
+    careers: {
+        title: "Careers at OMOOLA",
+        content: `
+            <h4>Join Our Team</h4>
+            <p>We're always looking for passionate, dedicated professionals to join our growing team. At OMOOLA, we believe in nurturing talent and providing opportunities for career growth.</p>
+            <p><strong>Current Opportunities:</strong></p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Licensed Pharmacists</li>
+                <li>Pharmacy Technicians</li>
+                <li>Customer Service Representatives</li>
+                <li>Delivery Riders</li>
+                <li>Store Managers</li>
+            </ul>
+            <p><strong>What We Offer:</strong></p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Competitive salary and benefits</li>
+                <li>Professional development opportunities</li>
+                <li>Health insurance coverage</li>
+                <li>Positive work environment</li>
+                <li>Career advancement opportunities</li>
+            </ul>
+            <p style="margin-top: 1rem;">To apply, send your CV to <strong>careers@omoolapharmacy.com</strong></p>
+        `
+    },
+    contact: {
+        title: "Contact Us",
+        content: `
+            <h4>Get in Touch</h4>
+            <p>We're here to help! Reach out to us through any of the following channels:</p>
+            <p><strong>Customer Service:</strong><br>
+            Phone: +234 801 234 5678<br>
+            Email: support@omoolapharmacy.com<br>
+            Hours: Mon-Sat 8:00 AM - 8:00 PM</p>
+            
+            <p><strong>WhatsApp:</strong><br>
+            +234 801 234 5678<br>
+            (Available for quick inquiries and orders)</p>
+            
+            <p><strong>Emergency Prescriptions:</strong><br>
+            Phone: +234 809 876 5432<br>
+            Available 24/7 for urgent medication needs</p>
+            
+            <p style="margin-top: 1rem;"><strong>Head Office:</strong><br>
+            123 Health Avenue, Ikeja, Lagos, Nigeria</p>
+            
+            <p style="margin-top: 1rem; font-style: italic;">We typically respond to all inquiries within 2 hours during business hours.</p>
+        `
+    },
+    track: {
+        title: "Track Your Order",
+        content: `
+            <h4>Order Tracking</h4>
+            <p>Stay updated on your order status with our real-time tracking system.</p>
+            <p><strong>How to Track:</strong></p>
+            <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Check your email for the order confirmation and tracking number</li>
+                <li>Visit our website and click on "Track Order"</li>
+                <li>Enter your order number and email address</li>
+                <li>View real-time updates on your delivery status</li>
+            </ol>
+            <p style="margin-top: 1rem;"><strong>Delivery Status Updates:</strong></p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li><strong>Order Confirmed:</strong> We've received your order</li>
+                <li><strong>Processing:</strong> Your order is being prepared</li>
+                <li><strong>Out for Delivery:</strong> Your order is on the way</li>
+                <li><strong>Delivered:</strong> Order successfully delivered</li>
+            </ul>
+            <p style="margin-top: 1rem;">For tracking assistance, contact us at +234 801 234 5678</p>
+        `
+    },
+    return: {
+        title: "Return Policy",
+        content: `
+            <h4>Our Return & Refund Policy</h4>
+            <p>Your satisfaction is our priority. We accept returns under the following conditions:</p>
+            
+            <p><strong>Eligible for Return:</strong></p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Wrong item delivered</li>
+                <li>Damaged or expired products</li>
+                <li>Manufacturing defects</li>
+                <li>Items returned within 7 days of delivery</li>
+            </ul>
+            
+            <p style="margin-top: 1rem;"><strong>Not Eligible for Return:</strong></p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Prescription medications (due to regulatory requirements)</li>
+                <li>Opened or used products</li>
+                <li>Products without original packaging</li>
+            </ul>
+            
+            <p style="margin-top: 1rem;"><strong>Return Process:</strong></p>
+            <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Contact customer service within 7 days</li>
+                <li>Provide order number and reason for return</li>
+                <li>Return product in original packaging</li>
+                <li>Refund processed within 5-7 business days</li>
+            </ol>
+            
+            <p style="margin-top: 1rem;">Contact us at support@omoolapharmacy.com for return requests.</p>
+        `
+    },
+    faqs: {
+        title: "Frequently Asked Questions",
+        content: `
+            <h4>Common Questions</h4>
+            
+            <p><strong>Q: Do I need a prescription to order medicines?</strong><br>
+            A: Prescription medications require a valid prescription from a licensed healthcare provider. Over-the-counter (OTC) medications can be ordered without a prescription.</p>
+            
+            <p style="margin-top: 1rem;"><strong>Q: How long does delivery take?</strong><br>
+            A: Same-day delivery is available for orders placed before 2 PM within Lagos. Other locations receive delivery within 1-3 business days.</p>
+            
+            <p style="margin-top: 1rem;"><strong>Q: What payment methods do you accept?</strong><br>
+            A: We accept Paystack, Mastercard, Visa, bank transfers, and cash on delivery.</p>
+            
+            <p style="margin-top: 1rem;"><strong>Q: Can I cancel my order?</strong><br>
+            A: Yes, orders can be cancelled before processing. Contact customer service immediately at +234 801 234 5678.</p>
+            
+            <p style="margin-top: 1rem;"><strong>Q: Are your medications genuine?</strong><br>
+            A: Yes, we source all medications from licensed distributors and manufacturers. All products are verified for authenticity.</p>
+            
+            <p style="margin-top: 1rem;"><strong>Q: Do you offer consultations?</strong><br>
+            A: Yes, our licensed pharmacists are available for free consultations during business hours.</p>
+        `
+    },
+    privacy: {
+        title: "Privacy Policy",
+        content: `
+            <h4>Your Privacy Matters</h4>
+            <p>OMOOLA Pharmacy & Stores is committed to protecting your privacy and personal information.</p>
+            
+            <p><strong>Information We Collect:</strong></p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Personal details (name, email, phone number)</li>
+                <li>Delivery address information</li>
+                <li>Payment information (securely processed)</li>
+                <li>Medical information (prescriptions - stored confidentially)</li>
+            </ul>
+            
+            <p style="margin-top: 1rem;"><strong>How We Use Your Information:</strong></p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Processing and delivering your orders</li>
+                <li>Providing customer support</li>
+                <li>Sending order updates and notifications</li>
+                <li>Improving our services</li>
+            </ul>
+            
+            <p style="margin-top: 1rem;"><strong>Data Security:</strong><br>
+            We use industry-standard encryption and security measures to protect your personal and medical information. Your data is never shared with third parties without consent.</p>
+            
+            <p style="margin-top: 1rem;"><strong>Your Rights:</strong><br>
+            You have the right to access, update, or delete your personal information at any time.</p>
+            
+            <p style="margin-top: 1rem;">For privacy concerns, contact privacy@omoolapharmacy.com</p>
+        `
+    },
+    terms: {
+        title: "Terms of Service",
+        content: `
+            <h4>Terms & Conditions</h4>
+            <p>By using OMOOLA Pharmacy & Stores services, you agree to the following terms:</p>
+            
+            <p><strong>1. Service Agreement:</strong><br>
+            Our services are subject to product availability. We reserve the right to refuse service in cases of suspected fraud or misuse.</p>
+            
+            <p style="margin-top: 1rem;"><strong>2. Prescription Requirements:</strong><br>
+            Prescription medications require valid prescriptions. Our pharmacists may contact your healthcare provider for verification.</p>
+            
+            <p style="margin-top: 1rem;"><strong>3. Pricing & Payment:</strong><br>
+            Prices are subject to change. Payment must be completed before delivery. We accept various payment methods for your convenience.</p>
+            
+            <p style="margin-top: 1rem;"><strong>4. Delivery Terms:</strong><br>
+            Delivery times are estimates and may vary. We're not liable for delays beyond our control.</p>
+            
+            <p style="margin-top: 1rem;"><strong>5. Product Information:</strong><br>
+            While we strive for accuracy, product information may contain errors. Always read product labels and consult healthcare providers.</p>
+            
+            <p style="margin-top: 1rem;"><strong>6. Liability:</strong><br>
+            We're not liable for adverse reactions to medications. Always follow healthcare provider instructions and report side effects.</p>
+            
+            <p style="margin-top: 1rem;">For complete terms, contact legal@omoolapharmacy.com</p>
+        `
+    },
+    prescription: {
+        title: "Prescription Policy",
+        content: `
+            <h4>Prescription Medication Policy</h4>
+            <p>OMOOLA Pharmacy adheres strictly to pharmaceutical regulations regarding prescription medications.</p>
+            
+            <p><strong>Valid Prescription Requirements:</strong></p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Issued by a licensed healthcare provider</li>
+                <li>Patient's full name and date of birth</li>
+                <li>Medication name, strength, and dosage</li>
+                <li>Prescriber's signature and registration number</li>
+                <li>Date of prescription (valid for 6 months)</li>
+            </ul>
+            
+            <p style="margin-top: 1rem;"><strong>How to Submit Prescriptions:</strong></p>
+            <ol style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Upload a clear photo/scan of your prescription</li>
+                <li>Send via WhatsApp: +234 801 234 5678</li>
+                <li>Email: prescriptions@omoolapharmacy.com</li>
+                <li>Present physically at any of our stores</li>
+            </ol>
+            
+            <p style="margin-top: 1rem;"><strong>Verification Process:</strong><br>
+            Our licensed pharmacists verify all prescriptions. We may contact your healthcare provider for clarification if needed.</p>
+            
+            <p style="margin-top: 1rem;"><strong>Confidentiality:</strong><br>
+            All prescription information is kept strictly confidential and stored securely in compliance with healthcare regulations.</p>
+            
+            <p style="margin-top: 1rem;">For prescription inquiries, call +234 801 234 5678</p>
+        `
+    },
+    disclaimer: {
+        title: "Medical Disclaimer",
+        content: `
+            <h4>Important Medical Information</h4>
+            <p><strong>General Disclaimer:</strong><br>
+            The information provided on our website and services is for informational purposes only and should not be considered as medical advice.</p>
+            
+            <p style="margin-top: 1rem;"><strong>Medication Use:</strong></p>
+            <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+                <li>Always read product labels and instructions carefully</li>
+                <li>Consult your healthcare provider before starting any medication</li>
+                <li>Report adverse reactions immediately</li>
+                <li>Do not exceed recommended dosages</li>
+                <li>Keep all medications out of reach of children</li>
+            </ul>
+            
+            <p style="margin-top: 1rem;"><strong>Professional Advice:</strong><br>
+            Information provided by our pharmacists is for general guidance. For specific medical concerns, always consult your physician or healthcare provider.</p>
+            
+            <p style="margin-top: 1rem;"><strong>Product Accuracy:</strong><br>
+            While we ensure product information accuracy, manufacturers may update formulations. Always check current product packaging.</p>
+            
+            <p style="margin-top: 1rem;"><strong>Emergency Situations:</strong><br>
+            In case of medical emergencies, call emergency services immediately. Do not rely solely on our pharmacy services for urgent medical care.</p>
+            
+            <p style="margin-top: 1rem; padding: 1rem; background: rgba(239, 68, 68, 0.1); border-radius: 8px;">
+                <strong>⚠️ Important:</strong> This pharmacy service does not replace professional medical care. Always seek advice from qualified healthcare providers for medical conditions.
+            </p>
+        `
+    }
+};
+
+function openFooterInfoModal(infoType) {
+    const info = footerInfo[infoType];
+    if (!info) return;
+    
+    footerInfoTitle.textContent = info.title;
+    footerInfoContent.innerHTML = info.content;
+    footerInfoModal.classList.add('active');
+    overlay.classList.add('active');
+}
+
+function closeFooterInfoModal() {
+    footerInfoModal.classList.remove('active');
+    if (!cartDrawer.classList.contains('active') && !rxModal.classList.contains('active')) {
+        overlay.classList.remove('active');
+    }
+}
+
+// Footer link event listeners
+document.querySelectorAll('.footer-link').forEach(link => {
+    link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const infoType = link.dataset.infoType;
+        openFooterInfoModal(infoType);
+    });
+});
+
+footerInfoClose?.addEventListener('click', closeFooterInfoModal);
+
+// Update copyright year dynamically
+const copyrightYearEl = document.getElementById('copyright-year');
+if (copyrightYearEl) {
+    copyrightYearEl.textContent = new Date().getFullYear();
+}
+
+// ===================================
 // Initialize
 // ===================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -736,5 +1079,6 @@ document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape') {
         closeCart();
         closeRxModal();
+        closeFooterInfoModal();
     }
 });
