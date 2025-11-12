@@ -16,7 +16,6 @@ const checkoutBtn = document.getElementById('checkoutBtn');
 // Prescription upload modal elements
 const rxModal = document.getElementById('rxModal');
 const uploadRxBtn = document.getElementById('uploadRxBtn');
-const heroUploadBtn = document.getElementById('heroUploadBtn');
 const uploadRxLink = document.getElementById('uploadRxLink');
 const rxModalClose = document.getElementById('rxModalClose');
 const uploadArea = document.getElementById('uploadArea');
@@ -47,6 +46,10 @@ const mobileUploadRx = document.getElementById('mobileUploadRx');
 
 // Floating buttons
 const scrollTopBtn = document.getElementById('scrollTopBtn');
+
+// Hero CTA buttons
+const shopNowBtn = document.getElementById('shopNowBtn');
+const exploreCategoriesBtn = document.getElementById('exploreCategoriesBtn');
 
 // ===================================
 // Product Rendering
@@ -603,9 +606,23 @@ overlay?.addEventListener('click', () => {
 });
 
 uploadRxBtn?.addEventListener('click', openRxModal);
-heroUploadBtn?.addEventListener('click', openRxModal);
 uploadRxLink?.addEventListener('click', openRxModal);
 rxModalClose?.addEventListener('click', closeRxModal);
+
+// Hero CTA buttons
+shopNowBtn?.addEventListener('click', () => {
+    const productsSection = document.getElementById('products');
+    if (productsSection) {
+        productsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+});
+
+exploreCategoriesBtn?.addEventListener('click', () => {
+    const categoriesSection = document.getElementById('categories');
+    if (categoriesSection) {
+        categoriesSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+});
 
 // Search
 if (navSearchInput && searchSuggestionsEl) {
