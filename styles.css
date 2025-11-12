@@ -1825,6 +1825,7 @@ input, textarea, select {
     font-weight: 600;
     font-size: 0.95rem;
     margin-bottom: var(--spacing-md);
+    color: var(--accent-orange);
 }
 
 .social-icons {
@@ -1860,6 +1861,7 @@ input, textarea, select {
     font-family: var(--font-heading);
     font-weight: 600;
     margin-bottom: var(--spacing-lg);
+    color: var(--accent-orange);
 }
 
 .footer-col ul {
@@ -1923,7 +1925,7 @@ input, textarea, select {
     font-weight: 600;
     font-size: 0.95rem;
     margin-bottom: var(--spacing-md);
-    color: var(--gray-400);
+    color: var(--accent-orange);
 }
 
 .payment-icons {
