@@ -79,6 +79,7 @@ body {
     color: var(--neutral-dark);
     background-color: var(--neutral-light);
     overflow-x: hidden;
+    max-width: 100vw;
 }
 
 img {
@@ -678,6 +679,15 @@ input, textarea, select {
     display: flex;
     align-items: center;
     gap: var(--spacing-sm);
+}
+
+/* Mobile hero search adjustments */
+@media (max-width: 767px) {
+    .hero-search {
+        max-width: calc(100% - 2rem);
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
 }
 
 .hero-search .search-icon {
@@ -1628,11 +1638,12 @@ input, textarea, select {
     .nav-container {
         flex-wrap: wrap;
         gap: var(--spacing-sm);
+        padding: var(--spacing-md) var(--spacing-sm);
     }
     
     .nav-logo {
-        margin-right: 0;
-        flex: 0 0 auto;
+        margin-right: auto;
+        flex: 0 1 auto;
     }
     
     .nav-search {
@@ -1641,9 +1652,14 @@ input, textarea, select {
         margin-top: var(--spacing-sm);
     }
     
-    .cart-button,
+    .cart-button {
+        order: 2;
+        margin-right: var(--spacing-xs);
+    }
+    
     .mobile-menu-toggle {
         order: 2;
+        margin-left: 0;
     }
 }
 
@@ -1653,6 +1669,7 @@ input, textarea, select {
 
 .hero-section {
     padding: var(--spacing-xl) 0;
+    overflow-x: hidden;
 }
 
 .section-title {
@@ -1678,6 +1695,18 @@ input, textarea, select {
 .upload-rx-btn {
     padding: 0.5rem 1rem;
     font-size: 0.875rem;
+}
+
+/* Hide Upload Rx button on mobile to prevent overflow */
+.hero-search .upload-rx-btn {
+    display: none;
+}
+
+/* Show Upload Rx button on desktop where there's enough space */
+@media (min-width: 1024px) {
+    .hero-search .upload-rx-btn {
+        display: flex;
+    }
 }
 
 /* Mobile product grid - single column */
