@@ -205,6 +205,7 @@ input, textarea, select {
 
 .logo-text {
     font-size: 1.25rem;
+    font-weight: 800;
     letter-spacing: -0.5px;
 }
 
@@ -212,6 +213,7 @@ input, textarea, select {
 @media (max-width: 767px) {
     .logo-text {
         font-size: 0.75rem;
+        font-weight: 800;
         white-space: nowrap;
     }
 }
@@ -1012,12 +1014,15 @@ input, textarea, select {
 
 .slide-content {
     position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     padding: var(--spacing-3xl);
     z-index: 4;
     color: var(--white);
+    text-align: center;
+    width: 100%;
+    max-width: 1200px;
 }
 
 .slide-content h3 {
