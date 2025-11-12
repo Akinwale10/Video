@@ -225,37 +225,6 @@ input, textarea, select {
     margin-left: -0.25rem;
 }
 
-.nav-search {
-    position: relative;
-    flex: 1;
-    max-width: 500px;
-    margin: 0 auto;
-}
-
-.nav-search input {
-    width: 100%;
-    padding: 0.75rem 1rem 0.75rem 3rem;
-    border: 2px solid var(--gray-200);
-    border-radius: var(--radius-full);
-    font-size: 0.95rem;
-    transition: all var(--transition-base);
-}
-
-.nav-search input:focus {
-    outline: none;
-    border-color: var(--primary-purple);
-    box-shadow: 0 0 0 3px rgba(106, 76, 255, 0.1);
-}
-
-.nav-search .search-icon {
-    position: absolute;
-    left: 1rem;
-    top: 50%;
-    transform: translateY(-50%);
-    color: var(--gray-400);
-    pointer-events: none;
-}
-
 .search-suggestions {
     position: absolute;
     top: 100%;
@@ -1610,12 +1579,6 @@ input, textarea, select {
 /* Base styles are for mobile (320px+) */
 
 /* Hide desktop elements on mobile */
-.nav-search {
-    display: block;
-    max-width: 100%;
-    flex: 1;
-}
-
 .nav-links {
     display: none;
 }
@@ -1644,12 +1607,6 @@ input, textarea, select {
     .nav-logo {
         margin-right: auto;
         flex: 0 1 auto;
-    }
-    
-    .nav-search {
-        order: 3;
-        width: 100%;
-        margin-top: var(--spacing-sm);
     }
     
     .cart-button {
@@ -1781,11 +1738,6 @@ input, textarea, select {
     
     .hero-subtitle {
         font-size: 1.0625rem;
-    }
-    
-    /* Show nav search on tablet */
-    .nav-search {
-        display: block;
     }
 
     .logo-tagline {
