@@ -963,6 +963,271 @@ input, textarea, select {
     font-weight: 500;
 }
 
+/* ===================================
+   Store Slideshow Styles
+   =================================== */
+.store-slideshow-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: var(--spacing-xl);
+}
+
+.store-slideshow {
+    position: relative;
+    width: 100%;
+    height: 500px;
+    border-radius: var(--radius-2xl);
+    overflow: hidden;
+    box-shadow: var(--shadow-2xl);
+}
+
+.store-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 800ms ease-in-out;
+    z-index: 1;
+}
+
+.store-slide.active {
+    opacity: 1;
+    z-index: 2;
+}
+
+.slide-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.6) 100%);
+    z-index: 3;
+}
+
+.slide-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: var(--spacing-3xl);
+    z-index: 4;
+    color: var(--white);
+}
+
+.slide-content h3 {
+    font-family: var(--font-heading);
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: var(--spacing-sm);
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+}
+
+.slide-content p {
+    font-size: 1.25rem;
+    font-weight: 500;
+    opacity: 0.95;
+    text-shadow: 0 1px 5px rgba(0, 0, 0, 0.3);
+}
+
+/* Slide Navigation Buttons */
+.slide-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(255, 255, 255, 0.9);
+    border: none;
+    width: 50px;
+    height: 50px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-lg);
+}
+
+.slide-nav:hover {
+    background: var(--white);
+    transform: translateY(-50%) scale(1.1);
+    box-shadow: var(--shadow-xl);
+}
+
+.slide-nav svg {
+    color: var(--primary-purple);
+}
+
+.slide-prev {
+    left: var(--spacing-lg);
+}
+
+.slide-next {
+    right: var(--spacing-lg);
+}
+
+/* Slide Indicators */
+.slide-indicators {
+    position: absolute;
+    bottom: var(--spacing-lg);
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.indicator {
+    width: 12px;
+    height: 12px;
+    border-radius: var(--radius-full);
+    background: rgba(255, 255, 255, 0.5);
+    border: 2px solid transparent;
+    cursor: pointer;
+    transition: all var(--transition-base);
+    padding: 0;
+}
+
+.indicator:hover {
+    background: rgba(255, 255, 255, 0.8);
+    transform: scale(1.2);
+}
+
+.indicator.active {
+    background: var(--white);
+    width: 32px;
+    border-color: var(--accent-orange);
+}
+
+/* View All Categories Button */
+.view-all-categories-btn {
+    position: absolute;
+    top: var(--spacing-lg);
+    right: var(--spacing-lg);
+    z-index: 10;
+    background: var(--accent-orange);
+    color: var(--white);
+    padding: var(--spacing-md) var(--spacing-xl);
+    border-radius: var(--radius-full);
+    font-weight: 600;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    transition: all var(--transition-base);
+    box-shadow: var(--shadow-lg);
+    border: none;
+}
+
+.view-all-categories-btn:hover {
+    background: #FF8C1A;
+    transform: scale(1.05);
+    box-shadow: var(--shadow-xl);
+}
+
+.view-all-categories-btn svg {
+    transition: transform var(--transition-base);
+}
+
+.view-all-categories-btn:hover svg {
+    transform: translateX(4px);
+}
+
+/* ===================================
+   Categories Modal
+   =================================== */
+.categories-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: var(--z-modal);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--spacing-lg);
+    opacity: 0;
+    visibility: hidden;
+    transition: all var(--transition-base);
+}
+
+.categories-modal.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.categories-modal-content {
+    background: var(--white);
+    border-radius: var(--radius-2xl);
+    max-width: 1200px;
+    width: 100%;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow-2xl);
+    transform: scale(0.9);
+    transition: transform var(--transition-base);
+}
+
+.categories-modal.active .categories-modal-content {
+    transform: scale(1);
+}
+
+.categories-modal-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--spacing-xl);
+    border-bottom: 2px solid var(--gray-200);
+    background: linear-gradient(135deg, var(--primary-purple) 0%, #7C5FFF 100%);
+    color: var(--white);
+}
+
+.categories-modal-header h3 {
+    font-family: var(--font-heading);
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin: 0;
+}
+
+.categories-modal-close {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all var(--transition-base);
+}
+
+.categories-modal-close:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.categories-modal-close svg {
+    color: var(--white);
+}
+
+.categories-modal-body {
+    padding: var(--spacing-xl);
+    overflow-y: auto;
+    flex: 1;
+}
+
 /* Responsive adjustments for product categories */
 @media (max-width: 767px) {
     .product-categories-grid {
@@ -972,6 +1237,53 @@ input, textarea, select {
     
     .category-image-wrapper {
         height: 180px;
+    }
+    
+    .store-slideshow {
+        height: 350px;
+    }
+    
+    .slide-content h3 {
+        font-size: 1.75rem;
+    }
+    
+    .slide-content p {
+        font-size: 1rem;
+    }
+    
+    .slide-nav {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .slide-prev {
+        left: var(--spacing-sm);
+    }
+    
+    .slide-next {
+        right: var(--spacing-sm);
+    }
+    
+    .view-all-categories-btn {
+        top: auto;
+        bottom: 80px;
+        right: 50%;
+        transform: translateX(50%);
+        font-size: 0.875rem;
+        padding: var(--spacing-sm) var(--spacing-lg);
+    }
+    
+    .categories-modal {
+        padding: 0;
+    }
+    
+    .categories-modal-content {
+        border-radius: 0;
+        max-height: 100vh;
+    }
+    
+    .categories-modal-body {
+        padding: var(--spacing-md);
     }
 }
 

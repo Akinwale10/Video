@@ -607,6 +607,7 @@ overlay?.addEventListener('click', () => {
     closeCart();
     closeRxModal();
     closeFooterInfoModal();
+    closeCategoriesModal();
     // Close mobile menu
     mobileMenuToggle?.classList.remove('active');
     mobileMenu?.classList.remove('active');
@@ -1045,6 +1046,111 @@ if (copyrightYearEl) {
 }
 
 // ===================================
+// Store Slideshow
+// ===================================
+let currentSlide = 0;
+let slideInterval;
+const slides = document.querySelectorAll('.store-slide');
+const indicators = document.querySelectorAll('.indicator');
+const slidePrev = document.getElementById('slidePrev');
+const slideNext = document.getElementById('slideNext');
+const slideIndicatorsContainer = document.getElementById('slideIndicators');
+
+function showSlide(index) {
+    // Remove active class from all slides and indicators
+    slides.forEach(slide => slide.classList.remove('active'));
+    indicators.forEach(indicator => indicator.classList.remove('active'));
+    
+    // Wrap around if needed
+    if (index >= slides.length) {
+        currentSlide = 0;
+    } else if (index < 0) {
+        currentSlide = slides.length - 1;
+    } else {
+        currentSlide = index;
+    }
+    
+    // Add active class to current slide and indicator
+    slides[currentSlide].classList.add('active');
+    indicators[currentSlide].classList.add('active');
+}
+
+function nextSlide() {
+    showSlide(currentSlide + 1);
+}
+
+function prevSlide() {
+    showSlide(currentSlide - 1);
+}
+
+function startSlideshow() {
+    slideInterval = setInterval(nextSlide, 5000); // Auto-advance every 5 seconds
+}
+
+function stopSlideshow() {
+    clearInterval(slideInterval);
+}
+
+// Slideshow event listeners
+if (slidePrev) {
+    slidePrev.addEventListener('click', () => {
+        prevSlide();
+        stopSlideshow();
+        startSlideshow(); // Restart auto-play after manual navigation
+    });
+}
+
+if (slideNext) {
+    slideNext.addEventListener('click', () => {
+        nextSlide();
+        stopSlideshow();
+        startSlideshow();
+    });
+}
+
+// Indicator click handlers
+if (slideIndicatorsContainer) {
+    indicators.forEach((indicator, index) => {
+        indicator.addEventListener('click', () => {
+            showSlide(index);
+            stopSlideshow();
+            startSlideshow();
+        });
+    });
+}
+
+// Pause slideshow on hover
+const slideshow = document.getElementById('storeSlideshow');
+if (slideshow) {
+    slideshow.addEventListener('mouseenter', stopSlideshow);
+    slideshow.addEventListener('mouseleave', startSlideshow);
+}
+
+// ===================================
+// Categories Modal
+// ===================================
+const categoriesModal = document.getElementById('categoriesModal');
+const viewAllCategoriesBtn = document.getElementById('viewAllCategoriesBtn');
+const categoriesModalClose = document.getElementById('categoriesModalClose');
+
+function openCategoriesModal() {
+    categoriesModal?.classList.add('active');
+    overlay?.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function closeCategoriesModal() {
+    categoriesModal?.classList.remove('active');
+    if (!cartDrawer?.classList.contains('active') && !rxModal?.classList.contains('active') && !footerInfoModal?.classList.contains('active')) {
+        overlay?.classList.remove('active');
+    }
+    document.body.style.overflow = '';
+}
+
+viewAllCategoriesBtn?.addEventListener('click', openCategoriesModal);
+categoriesModalClose?.addEventListener('click', closeCategoriesModal);
+
+// ===================================
 // Initialize
 // ===================================
 document.addEventListener('DOMContentLoaded', () => {
@@ -1052,6 +1158,12 @@ document.addEventListener('DOMContentLoaded', () => {
     renderOffers();
     setupCarousel();
     cart.updateCartBadge();
+    
+    // Initialize slideshow
+    if (slides.length > 0) {
+        showSlide(0);
+        startSlideshow();
+    }
     
     // Smooth scroll for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1080,5 +1192,19 @@ document.addEventListener('keydown', (e) => {
         closeCart();
         closeRxModal();
         closeFooterInfoModal();
+        closeCategoriesModal();
+    }
+    
+    // Arrow keys for slideshow navigation (when not in modal)
+    if (!categoriesModal?.classList.contains('active') && !rxModal?.classList.contains('active') && !cartDrawer?.classList.contains('active')) {
+        if (e.key === 'ArrowLeft') {
+            prevSlide();
+            stopSlideshow();
+            startSlideshow();
+        } else if (e.key === 'ArrowRight') {
+            nextSlide();
+            stopSlideshow();
+            startSlideshow();
+        }
     }
 });
