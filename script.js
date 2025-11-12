@@ -30,7 +30,6 @@ const rxForm = document.getElementById('rxForm');
 
 // Search elements
 const navSearchInput = document.getElementById('navSearchInput');
-const heroSearchInput = document.getElementById('heroSearchInput');
 const searchSuggestionsEl = document.getElementById('searchSuggestions');
 
 // Category carousel
@@ -611,9 +610,6 @@ rxModalClose?.addEventListener('click', closeRxModal);
 // Search
 if (navSearchInput && searchSuggestionsEl) {
     handleSearch(navSearchInput, searchSuggestionsEl);
-}
-if (heroSearchInput) {
-    handleSearch(heroSearchInput, document.createElement('div'));
 }
 
 // Mobile menu toggle
