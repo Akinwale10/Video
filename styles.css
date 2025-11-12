@@ -204,16 +204,16 @@ input, textarea, select {
 }
 
 .logo-text {
-    font-size: 1.25rem;
-    font-weight: 800;
+    font-size: 1.4rem;
+    font-weight: 900;
     letter-spacing: -0.5px;
 }
 
 /* Mobile logo text - smaller to fit full name */
 @media (max-width: 767px) {
     .logo-text {
-        font-size: 0.75rem;
-        font-weight: 800;
+        font-size: 0.85rem;
+        font-weight: 900;
         white-space: nowrap;
     }
 }
@@ -2342,9 +2342,16 @@ input, textarea, select {
     text-align: center;
 }
 
+.footer-bottom > * {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 /* Payment Methods Section */
 .footer-payment {
     margin-bottom: var(--spacing-xl);
+    text-align: center;
 }
 
 .footer-payment h4 {
@@ -2353,6 +2360,7 @@ input, textarea, select {
     font-size: 0.95rem;
     margin-bottom: var(--spacing-md);
     color: var(--accent-orange);
+    text-align: center;
 }
 
 .payment-icons {
@@ -2388,11 +2396,13 @@ input, textarea, select {
     color: var(--gray-400);
     margin-bottom: var(--spacing-md);
     line-height: 1.6;
+    text-align: center;
 }
 
 .footer-copyright {
     font-size: 0.875rem;
     color: var(--gray-500);
+    text-align: center;
 }
 
 .footer-copyright-extra {
