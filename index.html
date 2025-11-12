@@ -274,94 +274,186 @@
         </div>
     </section>
 
-    <!-- Product Categories Grid -->
+    <!-- Product Categories Section with Slideshow -->
     <section class="product-categories-section">
         <div class="container">
             <h2 class="section-title">Browse Product Categories</h2>
-            <div class="product-categories-grid">
-                <div class="product-category-card">
-                    <div class="category-image-wrapper" data-category="produce" data-emoji="🥬">
-                        <img src="https://source.unsplash.com/600x400/?fresh-fruits,vegetables" alt="Fresh Produce" class="category-image" loading="lazy">
-                        <div class="category-overlay"></div>
+            
+            <!-- Store Slideshow -->
+            <div class="store-slideshow-wrapper">
+                <div class="store-slideshow" id="storeSlideshow">
+                    <div class="store-slide active">
+                        <img src="https://images.unsplash.com/photo-1578916171728-46686eac8d58?w=1200&h=600&fit=crop" alt="Modern Supermarket Interior" class="slide-image">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <h3>Fresh Groceries & Essentials</h3>
+                            <p>Quality products at your fingertips</p>
+                        </div>
                     </div>
-                    <div class="category-content">
-                        <h3 class="category-title">Fresh Produce</h3>
-                        <p class="category-subtitle">Fruits & Vegetables</p>
+                    <div class="store-slide">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=1200&h=600&fit=crop" alt="Pharmacy Store" class="slide-image">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <h3>Your Trusted Pharmacy</h3>
+                            <p>Health and wellness care products</p>
+                        </div>
                     </div>
-                </div>
-                <div class="product-category-card">
-                    <div class="category-image-wrapper" data-category="meat" data-emoji="🥩">
-                        <img src="https://source.unsplash.com/600x400/?meat,poultry" alt="Meat & Poultry" class="category-image" loading="lazy">
-                        <div class="category-overlay"></div>
+                    <div class="store-slide">
+                        <img src="https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?w=1200&h=600&fit=crop" alt="Fresh Produce Section" class="slide-image">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <h3>Fresh Produce Daily</h3>
+                            <p>Farm-fresh fruits and vegetables</p>
+                        </div>
                     </div>
-                    <div class="category-content">
-                        <h3 class="category-title">Meat & Poultry</h3>
-                        <p class="category-subtitle">Fresh & Frozen</p>
+                    <div class="store-slide">
+                        <img src="https://images.unsplash.com/photo-1556742502-ec7c0e9f34b1?w=1200&h=600&fit=crop" alt="Medicine Shelves" class="slide-image">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <h3>Complete Healthcare Solutions</h3>
+                            <p>Medicines and health essentials</p>
+                        </div>
                     </div>
-                </div>
-                <div class="product-category-card">
-                    <div class="category-image-wrapper" data-category="dairy" data-emoji="🥛">
-                        <img src="https://source.unsplash.com/600x400/?dairy,eggs,milk" alt="Dairy & Eggs" class="category-image" loading="lazy">
-                        <div class="category-overlay"></div>
-                    </div>
-                    <div class="category-content">
-                        <h3 class="category-title">Dairy & Eggs</h3>
-                        <p class="category-subtitle">Fresh Daily</p>
-                    </div>
-                </div>
-                <div class="product-category-card">
-                    <div class="category-image-wrapper" data-category="drinks" data-emoji="🥤">
-                        <img src="https://source.unsplash.com/600x400/?drinks,beverages,juice" alt="Drinks & Beverages" class="category-image" loading="lazy">
-                        <div class="category-overlay"></div>
-                    </div>
-                    <div class="category-content">
-                        <h3 class="category-title">Drinks & Beverages</h3>
-                        <p class="category-subtitle">Refreshments</p>
-                    </div>
-                </div>
-                <div class="product-category-card">
-                    <div class="category-image-wrapper" data-category="snacks" data-emoji="🍬">
-                        <img src="https://source.unsplash.com/600x400/?snacks,candy,sweets" alt="Snacks & Confectioneries" class="category-image" loading="lazy">
-                        <div class="category-overlay"></div>
-                    </div>
-                    <div class="category-content">
-                        <h3 class="category-title">Snacks & Confectioneries</h3>
-                        <p class="category-subtitle">Sweet Treats</p>
+                    <div class="store-slide">
+                        <img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&h=600&fit=crop" alt="Shopping Experience" class="slide-image">
+                        <div class="slide-overlay"></div>
+                        <div class="slide-content">
+                            <h3>Shop with Confidence</h3>
+                            <p>Wide selection of products for your needs</p>
+                        </div>
                     </div>
                 </div>
-                <div class="product-category-card">
-                    <div class="category-image-wrapper" data-category="household" data-emoji="🧹">
-                        <img src="https://source.unsplash.com/600x400/?household,cleaning,home" alt="Household Items" class="category-image" loading="lazy">
-                        <div class="category-overlay"></div>
-                    </div>
-                    <div class="category-content">
-                        <h3 class="category-title">Household Items</h3>
-                        <p class="category-subtitle">Home Essentials</p>
-                    </div>
+                
+                <!-- Slideshow Navigation -->
+                <button class="slide-nav slide-prev" id="slidePrev" aria-label="Previous slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="slide-nav slide-next" id="slideNext" aria-label="Next slide">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+                
+                <!-- Slide Indicators -->
+                <div class="slide-indicators" id="slideIndicators">
+                    <button class="indicator active" data-slide="0" aria-label="Go to slide 1"></button>
+                    <button class="indicator" data-slide="1" aria-label="Go to slide 2"></button>
+                    <button class="indicator" data-slide="2" aria-label="Go to slide 3"></button>
+                    <button class="indicator" data-slide="3" aria-label="Go to slide 4"></button>
+                    <button class="indicator" data-slide="4" aria-label="Go to slide 5"></button>
                 </div>
-                <div class="product-category-card">
-                    <div class="category-image-wrapper" data-category="pharmacy" data-emoji="💊">
-                        <img src="https://source.unsplash.com/600x400/?pharmacy,medicine,health" alt="Pharmacy / Health Essentials" class="category-image" loading="lazy">
-                        <div class="category-overlay"></div>
+                
+                <!-- View All Button -->
+                <button class="view-all-categories-btn" id="viewAllCategoriesBtn">
+                    <span>View All Categories</span>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories Modal -->
+    <div class="categories-modal" id="categoriesModal">
+        <div class="categories-modal-content">
+            <div class="categories-modal-header">
+                <h3>All Product Categories</h3>
+                <button class="categories-modal-close" id="categoriesModalClose" aria-label="Close categories">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="categories-modal-body">
+                <div class="product-categories-grid">
+                    <div class="product-category-card">
+                        <div class="category-image-wrapper" data-category="produce" data-emoji="🥬">
+                            <img src="https://source.unsplash.com/600x400/?fresh-fruits,vegetables" alt="Fresh Produce" class="category-image" loading="lazy">
+                            <div class="category-overlay"></div>
+                        </div>
+                        <div class="category-content">
+                            <h3 class="category-title">Fresh Produce</h3>
+                            <p class="category-subtitle">Fruits & Vegetables</p>
+                        </div>
                     </div>
-                    <div class="category-content">
-                        <h3 class="category-title">Pharmacy / Health Essentials</h3>
-                        <p class="category-subtitle">Wellness & Care</p>
+                    <div class="product-category-card">
+                        <div class="category-image-wrapper" data-category="meat" data-emoji="🥩">
+                            <img src="https://source.unsplash.com/600x400/?meat,poultry" alt="Meat & Poultry" class="category-image" loading="lazy">
+                            <div class="category-overlay"></div>
+                        </div>
+                        <div class="category-content">
+                            <h3 class="category-title">Meat & Poultry</h3>
+                            <p class="category-subtitle">Fresh & Frozen</p>
+                        </div>
                     </div>
-                </div>
-                <div class="product-category-card">
-                    <div class="category-image-wrapper" data-category="baby" data-emoji="👶">
-                        <img src="https://source.unsplash.com/600x400/?baby,kids,toys" alt="Baby & Kids Products" class="category-image" loading="lazy">
-                        <div class="category-overlay"></div>
+                    <div class="product-category-card">
+                        <div class="category-image-wrapper" data-category="dairy" data-emoji="🥛">
+                            <img src="https://source.unsplash.com/600x400/?dairy,eggs,milk" alt="Dairy & Eggs" class="category-image" loading="lazy">
+                            <div class="category-overlay"></div>
+                        </div>
+                        <div class="category-content">
+                            <h3 class="category-title">Dairy & Eggs</h3>
+                            <p class="category-subtitle">Fresh Daily</p>
+                        </div>
                     </div>
-                    <div class="category-content">
-                        <h3 class="category-title">Baby & Kids Products</h3>
-                        <p class="category-subtitle">Care & Essentials</p>
+                    <div class="product-category-card">
+                        <div class="category-image-wrapper" data-category="drinks" data-emoji="🥤">
+                            <img src="https://source.unsplash.com/600x400/?drinks,beverages,juice" alt="Drinks & Beverages" class="category-image" loading="lazy">
+                            <div class="category-overlay"></div>
+                        </div>
+                        <div class="category-content">
+                            <h3 class="category-title">Drinks & Beverages</h3>
+                            <p class="category-subtitle">Refreshments</p>
+                        </div>
+                    </div>
+                    <div class="product-category-card">
+                        <div class="category-image-wrapper" data-category="snacks" data-emoji="🍬">
+                            <img src="https://source.unsplash.com/600x400/?snacks,candy,sweets" alt="Snacks & Confectioneries" class="category-image" loading="lazy">
+                            <div class="category-overlay"></div>
+                        </div>
+                        <div class="category-content">
+                            <h3 class="category-title">Snacks & Confectioneries</h3>
+                            <p class="category-subtitle">Sweet Treats</p>
+                        </div>
+                    </div>
+                    <div class="product-category-card">
+                        <div class="category-image-wrapper" data-category="household" data-emoji="🧹">
+                            <img src="https://source.unsplash.com/600x400/?household,cleaning,home" alt="Household Items" class="category-image" loading="lazy">
+                            <div class="category-overlay"></div>
+                        </div>
+                        <div class="category-content">
+                            <h3 class="category-title">Household Items</h3>
+                            <p class="category-subtitle">Home Essentials</p>
+                        </div>
+                    </div>
+                    <div class="product-category-card">
+                        <div class="category-image-wrapper" data-category="pharmacy" data-emoji="💊">
+                            <img src="https://source.unsplash.com/600x400/?pharmacy,medicine,health" alt="Pharmacy / Health Essentials" class="category-image" loading="lazy">
+                            <div class="category-overlay"></div>
+                        </div>
+                        <div class="category-content">
+                            <h3 class="category-title">Pharmacy / Health Essentials</h3>
+                            <p class="category-subtitle">Wellness & Care</p>
+                        </div>
+                    </div>
+                    <div class="product-category-card">
+                        <div class="category-image-wrapper" data-category="baby" data-emoji="👶">
+                            <img src="https://source.unsplash.com/600x400/?baby,kids,toys" alt="Baby & Kids Products" class="category-image" loading="lazy">
+                            <div class="category-overlay"></div>
+                        </div>
+                        <div class="category-content">
+                            <h3 class="category-title">Baby & Kids Products</h3>
+                            <p class="category-subtitle">Care & Essentials</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Featured Banners -->
     <section class="featured-section">
