@@ -975,7 +975,7 @@ input, textarea, select {
 .store-slideshow {
     position: relative;
     width: 100%;
-    height: 500px;
+    height: 700px;
     border-radius: var(--radius-2xl);
     overflow: hidden;
     box-shadow: var(--shadow-2xl);
@@ -1072,44 +1072,21 @@ input, textarea, select {
     right: var(--spacing-lg);
 }
 
-/* Slide Indicators */
+/* Slide Indicators - Hidden */
 .slide-indicators {
-    position: absolute;
-    bottom: var(--spacing-lg);
-    left: 50%;
-    transform: translateX(-50%);
-    z-index: 10;
-    display: flex;
-    gap: var(--spacing-sm);
+    display: none;
 }
 
 .indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: var(--radius-full);
-    background: rgba(255, 255, 255, 0.5);
-    border: 2px solid transparent;
-    cursor: pointer;
-    transition: all var(--transition-base);
-    padding: 0;
-}
-
-.indicator:hover {
-    background: rgba(255, 255, 255, 0.8);
-    transform: scale(1.2);
-}
-
-.indicator.active {
-    background: var(--white);
-    width: 32px;
-    border-color: var(--accent-orange);
+    display: none;
 }
 
 /* View All Categories Button */
 .view-all-categories-btn {
     position: absolute;
-    top: var(--spacing-lg);
-    right: var(--spacing-lg);
+    bottom: var(--spacing-lg);
+    left: 50%;
+    transform: translateX(-50%);
     z-index: 10;
     background: var(--accent-orange);
     color: var(--white);
@@ -1240,7 +1217,7 @@ input, textarea, select {
     }
     
     .store-slideshow {
-        height: 350px;
+        height: 500px;
     }
     
     .slide-content h3 {
@@ -1265,10 +1242,9 @@ input, textarea, select {
     }
     
     .view-all-categories-btn {
-        top: auto;
-        bottom: 80px;
-        right: 50%;
-        transform: translateX(50%);
+        bottom: var(--spacing-md);
+        left: 50%;
+        transform: translateX(-50%);
         font-size: 0.875rem;
         padding: var(--spacing-sm) var(--spacing-lg);
     }
