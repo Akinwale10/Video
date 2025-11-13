@@ -2221,6 +2221,7 @@ input, textarea, select {
 .footer-logo {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--spacing-sm);
     font-family: var(--font-heading);
     font-weight: 700;
@@ -2232,6 +2233,7 @@ input, textarea, select {
     color: var(--gray-400);
     margin-bottom: var(--spacing-lg);
     line-height: 1.6;
+    text-align: center;
 }
 
 .footer-license {
@@ -2240,11 +2242,13 @@ input, textarea, select {
     border-radius: var(--radius-lg);
     font-size: 0.875rem;
     margin-bottom: var(--spacing-lg);
+    text-align: center;
 }
 
 /* Social Media Icons */
 .footer-social {
     margin-top: var(--spacing-lg);
+    text-align: center;
 }
 
 .footer-social h4 {
@@ -2253,12 +2257,14 @@ input, textarea, select {
     font-size: 0.95rem;
     margin-bottom: var(--spacing-md);
     color: var(--accent-orange);
+    text-align: center;
 }
 
 .social-icons {
     display: flex;
     gap: var(--spacing-md);
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .social-icon {
@@ -2289,10 +2295,16 @@ input, textarea, select {
     font-weight: 600;
     margin-bottom: var(--spacing-lg);
     color: var(--accent-orange);
+    text-align: center;
+}
+
+.footer-col p {
+    text-align: center;
 }
 
 .footer-col ul {
     list-style: none;
+    text-align: center;
 }
 
 .footer-col ul li {
@@ -2317,6 +2329,7 @@ input, textarea, select {
     display: flex;
     flex-direction: column;
     gap: var(--spacing-sm);
+    text-align: center;
 }
 
 .newsletter-form input {
