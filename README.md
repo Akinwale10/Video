@@ -1,167 +1,399 @@
-# Frankenstein: First Breath - Video Treatment
+# Omolola Pharmacy & Stores
 
-A comprehensive, production-ready video treatment for a 2-minute cinematic short film exploring the moment of reanimation in Mary Shelley's classic gothic horror tale.
+A fully functional, professional e-commerce platform for medicines, health products, and groceries. Built with HTML, CSS, and Vanilla JavaScript, integrated with Firebase for authentication and Firestore database, and Cloudinary for image storage.
 
-## Overview
+![Omolola Pharmacy](https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80)
 
-**"It's alive."**
+## 🌟 Features
 
-This repository contains complete production documentation for *Frankenstein: First Breath*, a premium short film designed as a proof-of-concept for feature development. Shot in 8K RAW with Dolby Atmos sound design, this 2-minute piece delivers theatrical-quality horror that explores the birth of consciousness in Frankenstein's creature.
+### Customer-Facing Features
+- **Modern, Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
+- **Product Catalog**: Browse medicines, health products, and groceries
+- **Advanced Search**: Real-time search with suggestions
+- **Category Filtering**: Filter products by category, price, rating, and availability
+- **Product Details**: Comprehensive product information with reviews and ratings
+- **Shopping Cart**: Persistent cart using localStorage
+- **Secure Checkout**: Multi-step checkout process with delivery and payment options
+- **User Authentication**: Firebase-powered authentication system
 
-## Documentation
+### Admin Dashboard Features
+- **Dashboard Overview**: Key metrics and statistics at a glance
+- **Product Management**: Add, edit, and delete products with Cloudinary image uploads
+- **Category Management**: Organize products into categories
+- **Order Management**: View and update order statuses
+- **User Management**: Manage user accounts and roles
+- **Analytics**: Track sales, revenue, and customer data
 
-### 🎥 [Animatic Video](Frankenstein_FirstBreath_Animatic.mp4) | [Guide](ANIMATIC_README.md)
-**NEW!** Storyboard animatic - a 2-minute slideshow preview of all 18 shots:
-- Visual representation of the complete shot sequence
-- Shot-by-shot storyboards with descriptions
-- Timecodes and technical specifications for each shot
-- 1920x804 (2.39:1) at 24fps | 1.1 MB file size
-- Ready to download and share with production team
+## 🚀 Quick Start
 
-### 📋 [Main Treatment](FRANKENSTEIN_FIRST_BREATH_TREATMENT.md)
-The complete production bible including:
-- Full shot list with storyboard descriptions (18 shots)
-- Technical specifications for all equipment
-- Sound design layers (Dolby Atmos 7.1.4)
-- VFX breakdown (12 shots requiring post work)
-- Casting requirements
-- Post-production pipeline
-- Budget breakdown (~$110,000)
-- Distribution strategy
+### Prerequisites
+- Modern web browser (Chrome, Firefox, Safari, Edge)
+- Node.js (optional, for local development server)
+- Firebase account (for backend integration)
+- Cloudinary account (for image uploads)
 
-### 🎬 [Shot Breakdown](SHOT_BREAKDOWN.md)
-Detailed production reference guide:
-- Camera assignments (A, B, C-cam + specialty units)
-- Lighting setups by scene
-- Actor blocking diagrams
-- Complete prop list
-- Makeup & prosthetics schedule
-- Special effects coordination
-- Continuity checklist
-- Daily wrap procedures
+### Installation
 
-### 🔧 [Technical Specifications](TECHNICAL_SPECS.md)
-In-depth technical documentation:
-- Camera specs (ARRI ALEXA 65, Phantom Flex4K)
-- Lens specifications (Panavision Sphero 65)
-- Lighting equipment details
-- Audio recording setup
-- Post-production software requirements
-- Data management pipeline
-- Color grading workflow (ACES)
-- Dolby Atmos specifications
-- Quality control protocols
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/Akinwale10/Video.git
+   cd Video
+   ```
 
-## Project Specifications
+2. **Set up Firebase**
+   - Go to [Firebase Console](https://console.firebase.google.com/)
+   - Create a new project
+   - Enable Authentication (Email/Password)
+   - Create a Firestore database
+   - Copy your Firebase configuration
 
-| Specification | Details |
-|--------------|---------|
-| **Runtime** | 2:00 minutes |
-| **Format** | 8K RAW (ARRIRAW) |
-| **Aspect Ratio** | 2.39:1 (Anamorphic) |
-| **Camera** | ARRI ALEXA 65 + Panavision Sphero 65 lenses |
-| **Frame Rate** | 24fps (48fps for slow-motion) |
-| **Audio** | Dolby Atmos 7.1.4 mix |
-| **Color Grade** | Teal/orange split-tone, crushed blacks |
-| **Genre** | Gothic Horror / Body Horror |
+3. **Set up Cloudinary**
+   - Go to [Cloudinary Console](https://cloudinary.com/console)
+   - Copy your Cloud Name, API Key
+   - Create an unsigned upload preset
 
-## Synopsis
+4. **Configure the application**
+   - Copy `config.example.js` to create your own configuration
+   - Update `js/firebase-config.js` with your Firebase credentials
+   - Update `js/cloudinary-config.js` with your Cloudinary credentials
 
-In the heart of a storm-ravaged castle laboratory, Dr. Victor Frankenstein witnesses the impossible: his creation draws its first breath. As lightning tears through the night sky, electricity courses through the creature's assembled body, awakening consciousness where there should be none. In two visceral minutes, we witness the birth of a monster and the terror of its creator—a moment where science transcends morality, and life emerges from death.
+5. **Run locally**
+   ```bash
+   # Using Python
+   python -m http.server 8000
+   
+   # Using Node.js
+   npx serve
+   
+   # Using PHP
+   php -S localhost:8000
+   ```
 
-## Key Creative Elements
+6. **Open in browser**
+   Navigate to `http://localhost:8000`
 
-### Visual Style
-- Cold teal shadows contrasted with warm orange skin tones
-- High contrast cinematography with crushed blacks
-- Macro photography for body horror details
-- Static, dread-filled compositions punctuated by handheld panic
-
-### Sound Design
-- 3D panned thunder cracks across Atmos speakers
-- Heartbeat ramping from 80 to 120 BPM
-- Creature voice: human + bear growl, pitch-shifted -30%
-- Practical electrical effects (Tesla coil, spark generators)
-
-### Visual Effects
-- Lightning simulation (Houdini pyro)
-- 8K creature skin textures with subsurface scattering
-- CG iris contraction in extreme macro
-- Electrical plasma (EmberGen)
-- Mirror reflection morph sequence
-
-## Production Timeline
-
-- **Pre-Production:** 4 weeks
-- **Principal Photography:** 2 days
-- **Post-Production:** 8 weeks
-- **Total:** ~3 months from prep to delivery
-
-## Target Audience & Distribution
-
-### Festival Circuit
-- Sundance Film Festival
-- SXSW
-- Tribeca Film Festival
-- Fantastic Fest
-- Sitges Film Festival
-
-### Online Platforms
-- YouTube (4K premiere)
-- Vimeo Staff Pick
-- Short of the Week
-
-### Long-Term Goal
-Feature film development using this short as proof-of-concept
-
-## Why This Project Works
-
-1. **Technically Impressive:** 8K RAW workflow + Dolby Atmos sets professional standard
-2. **Emotionally Resonant:** Universal themes of creation, consciousness, and horror
-3. **Visually Distinctive:** Unique color grade and macro photography approach
-4. **Narratively Complete:** Full story arc in 120 seconds
-5. **Festival-Ready:** Perfect length and production value for competitive circuits
-
-## Getting Started
-
-### For Producers
-Start with the [Main Treatment](FRANKENSTEIN_FIRST_BREATH_TREATMENT.md) for budget and overview, then review the [Technical Specs](TECHNICAL_SPECS.md) for equipment requirements.
-
-### For Department Heads
-Review your specific section:
-- **Cinematographer:** Technical Specs → Camera & Lenses
-- **Production Designer:** Shot Breakdown → Prop List & Set Dressing  
-- **Sound Designer:** Main Treatment → Sound Design Layers
-- **VFX Supervisor:** Main Treatment → VFX Breakdown
-- **1st AD:** Shot Breakdown → Production Schedule
-
-### For Directors
-All three documents are essential reading. Start with the Main Treatment to understand the vision, then deep-dive into Shot Breakdown for blocking and Technical Specs for equipment capabilities.
-
-## File Structure
+## 📁 Project Structure
 
 ```
-Video/
-├── README.md                              # This file
-├── FRANKENSTEIN_FIRST_BREATH_TREATMENT.md # Complete production treatment
-├── SHOT_BREAKDOWN.md                      # On-set reference guide
-└── TECHNICAL_SPECS.md                     # Equipment & workflow specs
+omolola-pharmacy/
+├── index.html              # Homepage
+├── shop.html               # Product listing page
+├── product.html            # Product detail page
+├── cart.html               # Shopping cart
+├── checkout.html           # Checkout process
+├── about.html              # About page
+├── contact.html            # Contact page
+├── admin/                  # Admin dashboard
+│   ├── index.html          # Dashboard overview
+│   ├── products.html       # Product management
+│   ├── categories.html     # Category management
+│   ├── orders.html         # Order management
+│   └── users.html          # User management
+├── css/
+│   └── styles.css          # Main stylesheet
+├── js/
+│   ├── main.js             # Frontend functionality
+│   ├── admin.js            # Admin dashboard logic
+│   ├── firebase-config.js  # Firebase configuration
+│   └── cloudinary-config.js # Cloudinary configuration
+├── assets/
+│   ├── images/             # Image assets
+│   └── icons/              # SVG icons
+├── config.example.js       # Configuration template
+└── README.md               # This file
 ```
 
-## Contact & Credits
+## 🎨 Design System
 
-**Prepared for:** Production Planning  
-**Genre:** Gothic Horror / Body Horror  
-**Inspired by:** Mary Shelley's *Frankenstein* (1818)
+### Color Palette
+- **Primary Blue**: `#2563eb` - Main brand color
+- **Primary Dark**: `#1e40af` - Darker shade for hover states
+- **Secondary Orange**: `#f59e0b` - Call-to-action buttons
+- **Success Green**: `#10b981` - Success messages
+- **Error Red**: `#ef4444` - Error messages
+
+### Typography
+- **Headings**: Montserrat (Bold, Semi-bold)
+- **Body Text**: Lato (Regular, Medium)
+
+### Responsive Breakpoints
+- **Mobile**: < 768px
+- **Tablet**: 768px - 1024px
+- **Desktop**: > 1024px
+
+## 🔧 Configuration
+
+### Firebase Setup
+
+1. **Authentication**
+   ```javascript
+   // Enable Email/Password authentication in Firebase Console
+   // Users can register and login
+   ```
+
+2. **Firestore Database Structure**
+   ```
+   products/
+     - {productId}
+       - name: string
+       - description: string
+       - price: number
+       - category: string
+       - image: string (Cloudinary URL)
+       - stock: number
+       - rating: number
+       - reviews: number
+       - requiresPrescription: boolean
+   
+   categories/
+     - {categoryId}
+       - name: string
+       - slug: string
+       - description: string
+   
+   orders/
+     - {orderId}
+       - userId: string
+       - items: array
+       - total: number
+       - status: string
+       - deliveryAddress: object
+       - createdAt: timestamp
+   
+   users/
+     - {userId}
+       - email: string
+       - name: string
+       - role: string
+       - createdAt: timestamp
+   ```
+
+### Cloudinary Setup
+
+1. **Create Upload Preset**
+   - Go to Settings > Upload
+   - Add upload preset
+   - Set mode to "Unsigned"
+   - Configure folder and tags
+
+2. **Image Optimization**
+   - Automatic format selection
+   - Automatic quality adjustment
+   - Responsive image delivery
+
+## 🛒 Shopping Cart
+
+The shopping cart uses browser localStorage for persistence:
+- Items persist across browser sessions
+- Automatic quantity updates
+- Real-time total calculation
+- Empty cart detection
+
+```javascript
+// Cart operations
+cart.addItem(product, quantity);
+cart.removeItem(productId);
+cart.updateQuantity(productId, quantity);
+cart.getTotal();
+cart.clear();
+```
+
+## 👨‍💼 Admin Dashboard
+
+### Access
+- URL: `/admin/index.html`
+- Default Password: `admin123` (Change in production!)
+- Password is stored in localStorage for development
+
+### Features
+- **Dashboard**: Overview of key metrics
+- **Products**: CRUD operations for products
+- **Categories**: Manage product categories
+- **Orders**: View and update order statuses
+- **Users**: Manage user accounts
+
+### Security Notes
+⚠️ **Important**: The current admin authentication is for development only. In production:
+- Implement proper Firebase Authentication
+- Use Firebase Custom Claims for role-based access
+- Add server-side validation
+- Never store passwords in client-side code
+
+## 🔐 Security Considerations
+
+### Current Implementation (Development)
+- Admin password in localStorage
+- Client-side validation only
+- Sample product data
+
+### Production Recommendations
+1. **Authentication**: Use Firebase Authentication with custom claims
+2. **Authorization**: Implement proper role-based access control
+3. **Data Validation**: Server-side validation using Firebase Security Rules
+4. **API Keys**: Store in environment variables, never commit to repository
+5. **HTTPS**: Always use SSL/TLS in production
+6. **Payment Integration**: Use secure payment gateways (Stripe, Paystack)
+7. **Prescription Verification**: Implement pharmacist review system
+8. **Data Protection**: Comply with healthcare data regulations (HIPAA, GDPR)
+
+## 📱 Responsive Design
+
+The site is fully responsive with three main breakpoints:
+
+- **Mobile (< 768px)**
+  - Single column layout
+  - Hamburger menu
+  - Touch-optimized interactions
+  - Simplified navigation
+
+- **Tablet (768px - 1024px)**
+  - Two-column layouts
+  - Adapted navigation
+  - Optimized for touch
+
+- **Desktop (> 1024px)**
+  - Multi-column layouts
+  - Full navigation
+  - Hover effects
+  - Sticky elements
+
+## ♿ Accessibility
+
+- Semantic HTML5 elements
+- ARIA labels and roles
+- Keyboard navigation support
+- Focus indicators
+- Alt text for images
+- Color contrast (WCAG AA compliant)
+- Reduced motion support
+
+## 🌐 Browser Support
+
+- Chrome/Edge (latest)
+- Firefox (latest)
+- Safari (latest)
+- Mobile browsers (iOS Safari, Chrome Mobile)
+
+## 🚢 Deployment
+
+### GitHub Pages
+```bash
+git add .
+git commit -m "Initial commit"
+git push origin main
+```
+Enable GitHub Pages in repository settings.
+
+### Netlify
+1. Connect your repository
+2. Set build command: (none)
+3. Set publish directory: `/`
+4. Deploy!
+
+### Vercel
+```bash
+npm i -g vercel
+vercel
+```
+
+### Traditional Hosting
+Upload all files via FTP to your web host's public directory.
+
+## 🧪 Testing
+
+### Manual Testing Checklist
+- [ ] Homepage loads correctly
+- [ ] Navigation works on all pages
+- [ ] Products display properly
+- [ ] Search functionality works
+- [ ] Filters work on shop page
+- [ ] Add to cart functionality
+- [ ] Cart updates correctly
+- [ ] Checkout process completes
+- [ ] Admin login works
+- [ ] Admin CRUD operations
+- [ ] Responsive on mobile
+- [ ] Responsive on tablet
+
+## 📊 Performance
+
+- Minimal dependencies (vanilla JS)
+- Optimized CSS (single file)
+- Lazy loading for images
+- Local storage for cart
+- Smooth animations with CSS
+- Hardware-accelerated transitions
+
+## 🔄 Future Enhancements
+
+- [ ] Real-time inventory updates
+- [ ] Email notifications
+- [ ] SMS alerts for orders
+- [ ] Live chat with pharmacist
+- [ ] Product reviews and ratings
+- [ ] Wishlist functionality
+- [ ] Advanced search filters
+- [ ] Multi-language support
+- [ ] PWA capabilities
+- [ ] Push notifications
+- [ ] Order tracking
+- [ ] Loyalty program
+- [ ] Prescription upload
+- [ ] Video consultations
+
+## 📄 License
+
+Copyright © 2024 Omolola Pharmacy & Stores. All rights reserved.
+
+### Important Legal Notes
+
+**Pharmacy License**: PCN-NG-2024-001234 (Replace with actual license in production)
+
+**Medical Disclaimer**: This is a demonstration project. For production use:
+- Obtain proper pharmacy licenses
+- Comply with healthcare regulations
+- Implement proper prescription verification
+- Consult legal counsel for medical disclaimers
+- Follow local pharmacy laws
+
+## 🤝 Contributing
+
+This is a demonstration project. For improvements:
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Open a Pull Request
+
+## 📞 Support
+
+For questions or issues:
+- Check the documentation
+- Review code comments
+- Check browser console for errors
+- Ensure JavaScript is enabled
+
+## 🙏 Acknowledgments
+
+- Design inspired by modern e-commerce platforms
+- Images from [Unsplash](https://unsplash.com)
+- Icons: SVG (inline)
+- Fonts: [Google Fonts](https://fonts.google.com)
+
+## 📋 Changelog
+
+### Version 1.0.0 (November 2024)
+- Initial release
+- Complete frontend implementation
+- Admin dashboard
+- Firebase integration ready
+- Cloudinary integration ready
+- Responsive design
+- Shopping cart functionality
+- Search and filter features
 
 ---
 
-## License
+**Built with ❤️ for Omolola Pharmacy & Stores**
 
-This treatment is provided as a complete production package for *Frankenstein: First Breath*. All creative and technical elements are designed to work together as a cohesive whole.
-
----
-
-**Ready to shoot. Lights. Camera. Reanimation.**
-
-*Document Version: 1.0 | Last Updated: 2025-11-10*
+*For any questions or support, please contact the development team.*

@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders Management - Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        body { background-color: var(--bg-light); }
+        .admin-layout { display: grid; grid-template-columns: 250px 1fr; min-height: 100vh; }
+        .admin-sidebar { background-color: var(--text-dark); color: white; padding: 2rem 0; }
+        .admin-logo { padding: 0 1.5rem; margin-bottom: 2rem; font-size: 1.25rem; font-weight: 700; }
+        .admin-nav { list-style: none; }
+        .admin-nav-item { padding: 0.875rem 1.5rem; cursor: pointer; transition: var(--transition-fast); display: flex; align-items: center; gap: 0.75rem; }
+        .admin-nav-item:hover, .admin-nav-item.active { background-color: var(--primary-blue); }
+        .admin-main { padding: 2rem; }
+        .admin-header { background: white; padding: 1.5rem 2rem; margin: -2rem -2rem 2rem; box-shadow: var(--shadow-sm); }
+        .order-card { background: white; padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 1rem; }
+        .order-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color); }
+        .status-badge { padding: 0.375rem 0.875rem; border-radius: var(--radius-full); font-size: 0.875rem; font-weight: 600; }
+        .status-pending { background-color: #fef3c7; color: #92400e; }
+        .status-processing { background-color: #dbeafe; color: #1e40af; }
+        .status-completed { background-color: #d1fae5; color: #065f46; }
+    </style>
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <svg width="30" height="30" viewBox="0 0 40 40" style="vertical-align: middle; margin-right: 0.5rem;">
+                    <rect width="40" height="40" rx="8" fill="#2563eb"/>
+                    <path d="M20 10v20M10 20h20" stroke="white" stroke-width="3"/>
+                    <circle cx="20" cy="20" r="7" stroke="white" stroke-width="2" fill="none"/>
+                </svg>
+                Admin Panel
+            </div>
+            <ul class="admin-nav">
+                <li class="admin-nav-item" onclick="window.location='index.html'">📊 Dashboard</li>
+                <li class="admin-nav-item" onclick="window.location='products.html'">📦 Products</li>
+                <li class="admin-nav-item" onclick="window.location='categories.html'">📂 Categories</li>
+                <li class="admin-nav-item active" onclick="window.location='orders.html'">🛒 Orders</li>
+                <li class="admin-nav-item" onclick="window.location='users.html'">👥 Users</li>
+                <li class="admin-nav-item" onclick="logout()">🚪 Logout</li>
+            </ul>
+        </aside>
+
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1>Orders Management</h1>
+            </div>
+
+            <div id="ordersContainer">
+                <div class="order-card">
+                    <div class="order-header">
+                        <div>
+                            <h3>Order #001</h3>
+                            <p style="color: var(--text-gray); font-size: 0.875rem;">Nov 14, 2024 - Customer: John Doe</p>
+                        </div>
+                        <span class="status-badge status-pending">Pending</span>
+                    </div>
+                    <p><strong>Total:</strong> ₦25,500</p>
+                    <p><strong>Items:</strong> 3 products</p>
+                    <div style="margin-top: 1rem;">
+                        <button class="btn btn-primary" style="padding: 0.5rem 1rem; margin-right: 0.5rem;">Update Status</button>
+                        <button class="btn btn-secondary" style="padding: 0.5rem 1rem;">View Details</button>
+                    </div>
+                </div>
+
+                <div class="order-card">
+                    <div class="order-header">
+                        <div>
+                            <h3>Order #002</h3>
+                            <p style="color: var(--text-gray); font-size: 0.875rem;">Nov 13, 2024 - Customer: Jane Smith</p>
+                        </div>
+                        <span class="status-badge status-completed">Completed</span>
+                    </div>
+                    <p><strong>Total:</strong> ₦18,200</p>
+                    <p><strong>Items:</strong> 2 products</p>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        if (localStorage.getItem('omolola_admin_auth') !== 'true') {
+            window.location.href = 'index.html';
+        }
+        function logout() {
+            localStorage.removeItem('omolola_admin_auth');
+            window.location.href = '../index.html';
+        }
+    </script>
+</body>
+</html>
