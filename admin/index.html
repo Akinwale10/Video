@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Dashboard - Omolola Pharmacy</title>
+    <title>Admin Dashboard - Omoola Pharmacy</title>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../css/styles.css">
     <style>
@@ -105,10 +105,10 @@
     <script src="../js/main.js"></script>
     <script>
         // Check admin authentication
-        if (localStorage.getItem('omolola_admin_auth') !== 'true') {
+        if (localStorage.getItem('omoola_admin_auth') !== 'true') {
             const password = prompt('Enter admin password:');
             if (password === 'admin123') {
-                localStorage.setItem('omolola_admin_auth', 'true');
+                localStorage.setItem('omoola_admin_auth', 'true');
             } else {
                 alert('Invalid password');
                 window.location.href = '../index.html';
@@ -122,7 +122,7 @@
         document.getElementById('totalUsers').textContent = '156';
 
         function logout() {
-            localStorage.removeItem('omolola_admin_auth');
+            localStorage.removeItem('omoola_admin_auth');
             window.location.href = '../index.html';
         }
     </script>

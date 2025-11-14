@@ -1,5 +1,5 @@
 // ==========================================
-// Omolola Pharmacy & Stores - Main JavaScript
+// Omoola Pharmacy & Stores - Main JavaScript
 // Frontend Functionality
 // ==========================================
 
@@ -132,12 +132,12 @@ class ShoppingCart {
     }
 
     loadCart() {
-        const cartData = localStorage.getItem('omolola_cart');
+        const cartData = localStorage.getItem('omoola_cart');
         return cartData ? JSON.parse(cartData) : [];
     }
 
     saveCart() {
-        localStorage.setItem('omolola_cart', JSON.stringify(this.items));
+        localStorage.setItem('omoola_cart', JSON.stringify(this.items));
         this.updateCartBadge();
     }
 
@@ -425,7 +425,7 @@ function initializeNewsletter() {
 
 function checkAdminAuth() {
     // Check if user is authenticated as admin
-    const isAdmin = localStorage.getItem('omolola_admin_auth') === 'true';
+    const isAdmin = localStorage.getItem('omoola_admin_auth') === 'true';
     const adminLink = document.querySelector('.admin-link-item');
     
     if (adminLink && isAdmin) {

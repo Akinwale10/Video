@@ -38,7 +38,7 @@ export const cloudinaryConfig = {
 // In production, use Firebase Authentication with proper role management
 
 export const adminCredentials = {
-    email: "admin@omololapharmacy.com",
+    email: "admin@omoolapharmacy.com",
     password: "your-secure-password"
 };
 
@@ -46,10 +46,10 @@ export const adminCredentials = {
 
 export const appSettings = {
     // Site Information
-    siteName: "Omolola Pharmacy & Stores",
-    siteUrl: "https://omololapharmacy.com",
+    siteName: "Omoola Pharmacy & Stores",
+    siteUrl: "https://omoolapharmacy.com",
     phoneNumber: "+234 801 234 5678",
-    email: "info@omololapharmacy.com",
+    email: "info@omoolapharmacy.com",
     address: "123 Medical Plaza, Victoria Island, Lagos",
     
     // Pharmacy License
@@ -90,7 +90,7 @@ export const isDevelopment = window.location.hostname === 'localhost' ||
 
 // API ENDPOINTS (if using separate backend)
 export const apiEndpoints = {
-    base: isDevelopment ? 'http://localhost:3000/api' : 'https://api.omololapharmacy.com',
+    base: isDevelopment ? 'http://localhost:3000/api' : 'https://api.omoolapharmacy.com',
     products: '/products',
     categories: '/categories',
     orders: '/orders',

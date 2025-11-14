@@ -1,8 +1,8 @@
-# Omolola Pharmacy & Stores
+# Omoola Pharmacy & Stores
 
 A fully functional, professional e-commerce platform for medicines, health products, and groceries. Built with HTML, CSS, and Vanilla JavaScript, integrated with Firebase for authentication and Firestore database, and Cloudinary for image storage.
 
-![Omolola Pharmacy](https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80)
+![Omoola Pharmacy](https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80)
 
 ## 🌟 Features
 
@@ -75,7 +75,7 @@ A fully functional, professional e-commerce platform for medicines, health produ
 ## 📁 Project Structure
 
 ```
-omolola-pharmacy/
+omoola-pharmacy/
 ├── index.html              # Homepage
 ├── shop.html               # Product listing page
 ├── product.html            # Product detail page
@@ -343,7 +343,7 @@ Upload all files via FTP to your web host's public directory.
 
 ## 📄 License
 
-Copyright © 2024 Omolola Pharmacy & Stores. All rights reserved.
+Copyright © 2024 Omoola Pharmacy & Stores. All rights reserved.
 
 ### Important Legal Notes
 
@@ -394,6 +394,6 @@ For questions or issues:
 
 ---
 
-**Built with ❤️ for Omolola Pharmacy & Stores**
+**Built with ❤️ for Omoola Pharmacy & Stores**
 
 *For any questions or support, please contact the development team.*
