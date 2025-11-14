@@ -1,5 +1,5 @@
 // ==========================================
-// Omolola Pharmacy & Stores - Admin Dashboard
+// Omoola Pharmacy & Stores - Admin Dashboard
 // Admin Panel Functionality
 // ==========================================
 
@@ -10,7 +10,7 @@ class AdminAuth {
     }
 
     checkAuth() {
-        const isAuthenticated = localStorage.getItem('omolola_admin_auth') === 'true';
+        const isAuthenticated = localStorage.getItem('omoola_admin_auth') === 'true';
         if (!isAuthenticated && !window.location.pathname.includes('login')) {
             this.promptLogin();
         }
@@ -20,7 +20,7 @@ class AdminAuth {
     promptLogin() {
         const password = prompt('Enter admin password:');
         if (password === 'admin123') {
-            localStorage.setItem('omolola_admin_auth', 'true');
+            localStorage.setItem('omoola_admin_auth', 'true');
             return true;
         } else {
             alert('Invalid password');
@@ -30,7 +30,7 @@ class AdminAuth {
     }
 
     logout() {
-        localStorage.removeItem('omolola_admin_auth');
+        localStorage.removeItem('omoola_admin_auth');
         window.location.href = '../index.html';
     }
 }

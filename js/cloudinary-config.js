@@ -22,11 +22,11 @@ const cloudinaryWidgetConfig = {
     maxFiles: 1,
     maxFileSize: 5000000, // 5MB
     clientAllowedFormats: ['jpg', 'jpeg', 'png', 'gif', 'webp'],
-    folder: 'omolola-pharmacy/products',
+    folder: 'omoola-pharmacy/products',
     tags: ['product-image'],
     context: {
         alt: 'Product Image',
-        caption: 'Uploaded from Omolola Pharmacy Admin'
+        caption: 'Uploaded from Omoola Pharmacy Admin'
     }
 };
 
