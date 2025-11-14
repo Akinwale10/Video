@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Omolola Pharmacy</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        body { background-color: var(--bg-light); }
+        .admin-layout { display: grid; grid-template-columns: 250px 1fr; min-height: 100vh; }
+        .admin-sidebar { background-color: var(--text-dark); color: white; padding: 2rem 0; }
+        .admin-logo { padding: 0 1.5rem; margin-bottom: 2rem; font-size: 1.25rem; font-weight: 700; }
+        .admin-nav { list-style: none; }
+        .admin-nav-item { padding: 0.875rem 1.5rem; cursor: pointer; transition: var(--transition-fast); display: flex; align-items: center; gap: 0.75rem; }
+        .admin-nav-item:hover, .admin-nav-item.active { background-color: var(--primary-blue); }
+        .admin-main { padding: 2rem; }
+        .admin-header { background: white; padding: 1.5rem 2rem; margin: -2rem -2rem 2rem; box-shadow: var(--shadow-sm); display: flex; justify-content: space-between; align-items: center; }
+        .stats-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem; margin-bottom: 2rem; }
+        .stat-card { background: white; padding: 1.5rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); }
+        .stat-value { font-size: 2rem; font-weight: 700; color: var(--primary-blue); margin-bottom: 0.5rem; }
+        .stat-label { color: var(--text-gray); font-size: 0.875rem; text-transform: uppercase; letter-spacing: 0.5px; }
+        @media (max-width: 768px) { .admin-layout { grid-template-columns: 1fr; } .admin-sidebar { display: none; } }
+    </style>
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <svg width="30" height="30" viewBox="0 0 40 40" style="vertical-align: middle; margin-right: 0.5rem;">
+                    <rect width="40" height="40" rx="8" fill="#2563eb"/>
+                    <path d="M20 10v20M10 20h20" stroke="white" stroke-width="3"/>
+                    <circle cx="20" cy="20" r="7" stroke="white" stroke-width="2" fill="none"/>
+                </svg>
+                Admin Panel
+            </div>
+            <ul class="admin-nav">
+                <li class="admin-nav-item active" onclick="window.location='index.html'">
+                    <span>📊</span> Dashboard
+                </li>
+                <li class="admin-nav-item" onclick="window.location='products.html'">
+                    <span>📦</span> Products
+                </li>
+                <li class="admin-nav-item" onclick="window.location='categories.html'">
+                    <span>📂</span> Categories
+                </li>
+                <li class="admin-nav-item" onclick="window.location='orders.html'">
+                    <span>🛒</span> Orders
+                </li>
+                <li class="admin-nav-item" onclick="window.location='users.html'">
+                    <span>👥</span> Users
+                </li>
+                <li class="admin-nav-item" onclick="logout()">
+                    <span>🚪</span> Logout
+                </li>
+            </ul>
+        </aside>
+
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1>Dashboard Overview</h1>
+                <div style="display: flex; gap: 1rem; align-items: center;">
+                    <span style="color: var(--text-gray);">Welcome, Admin</span>
+                    <a href="../index.html" class="btn btn-secondary" style="padding: 0.5rem 1rem;">View Site</a>
+                </div>
+            </div>
+
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-value" id="totalProducts">0</div>
+                    <div class="stat-label">Total Products</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalOrders">0</div>
+                    <div class="stat-label">Total Orders</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalRevenue">₦0</div>
+                    <div class="stat-label">Total Revenue</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-value" id="totalUsers">0</div>
+                    <div class="stat-label">Total Users</div>
+                </div>
+            </div>
+
+            <div style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-bottom: 2rem;">
+                <h2 style="margin-bottom: 1.5rem;">Recent Orders</h2>
+                <div id="recentOrders">
+                    <p style="color: var(--text-gray); text-align: center; padding: 2rem;">No recent orders</p>
+                </div>
+            </div>
+
+            <div style="background: white; padding: 2rem; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                <h2 style="margin-bottom: 1.5rem;">Quick Actions</h2>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem;">
+                    <button class="btn btn-primary" onclick="window.location='products.html'">Add New Product</button>
+                    <button class="btn btn-secondary" onclick="window.location='categories.html'">Manage Categories</button>
+                    <button class="btn btn-secondary" onclick="window.location='orders.html'">View All Orders</button>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Check admin authentication
+        if (localStorage.getItem('omolola_admin_auth') !== 'true') {
+            const password = prompt('Enter admin password:');
+            if (password === 'admin123') {
+                localStorage.setItem('omolola_admin_auth', 'true');
+            } else {
+                alert('Invalid password');
+                window.location.href = '../index.html';
+            }
+        }
+
+        // Load dashboard stats
+        document.getElementById('totalProducts').textContent = sampleProducts.length;
+        document.getElementById('totalOrders').textContent = '42';
+        document.getElementById('totalRevenue').textContent = '₦2,450,000';
+        document.getElementById('totalUsers').textContent = '156';
+
+        function logout() {
+            localStorage.removeItem('omolola_admin_auth');
+            window.location.href = '../index.html';
+        }
+    </script>
+</body>
+</html>

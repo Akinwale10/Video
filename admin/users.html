@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Users - Admin</title>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/styles.css">
+    <style>
+        body { background-color: var(--bg-light); }
+        .admin-layout { display: grid; grid-template-columns: 250px 1fr; min-height: 100vh; }
+        .admin-sidebar { background-color: var(--text-dark); color: white; padding: 2rem 0; }
+        .admin-logo { padding: 0 1.5rem; margin-bottom: 2rem; font-size: 1.25rem; font-weight: 700; }
+        .admin-nav { list-style: none; }
+        .admin-nav-item { padding: 0.875rem 1.5rem; cursor: pointer; transition: var(--transition-fast); display: flex; align-items: center; gap: 0.75rem; }
+        .admin-nav-item:hover, .admin-nav-item.active { background-color: var(--primary-blue); }
+        .admin-main { padding: 2rem; }
+        .admin-header { background: white; padding: 1.5rem 2rem; margin: -2rem -2rem 2rem; box-shadow: var(--shadow-sm); }
+        .user-table { width: 100%; background: white; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md); }
+        .user-table th, .user-table td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--border-color); }
+        .user-table th { background-color: var(--bg-light); font-weight: 700; }
+    </style>
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar">
+            <div class="admin-logo">
+                <svg width="30" height="30" viewBox="0 0 40 40" style="vertical-align: middle; margin-right: 0.5rem;">
+                    <rect width="40" height="40" rx="8" fill="#2563eb"/>
+                    <path d="M20 10v20M10 20h20" stroke="white" stroke-width="3"/>
+                    <circle cx="20" cy="20" r="7" stroke="white" stroke-width="2" fill="none"/>
+                </svg>
+                Admin Panel
+            </div>
+            <ul class="admin-nav">
+                <li class="admin-nav-item" onclick="window.location='index.html'">📊 Dashboard</li>
+                <li class="admin-nav-item" onclick="window.location='products.html'">📦 Products</li>
+                <li class="admin-nav-item" onclick="window.location='categories.html'">📂 Categories</li>
+                <li class="admin-nav-item" onclick="window.location='orders.html'">🛒 Orders</li>
+                <li class="admin-nav-item active" onclick="window.location='users.html'">👥 Users</li>
+                <li class="admin-nav-item" onclick="logout()">🚪 Logout</li>
+            </ul>
+        </aside>
+
+        <main class="admin-main">
+            <div class="admin-header">
+                <h1>Users Management</h1>
+            </div>
+
+            <table class="user-table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>Role</th>
+                        <th>Joined</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>John Doe</td>
+                        <td>john@example.com</td>
+                        <td>Customer</td>
+                        <td>Nov 10, 2024</td>
+                        <td><button class="btn btn-secondary" style="padding: 0.5rem 1rem;">View</button></td>
+                    </tr>
+                    <tr>
+                        <td>Jane Smith</td>
+                        <td>jane@example.com</td>
+                        <td>Customer</td>
+                        <td>Nov 8, 2024</td>
+                        <td><button class="btn btn-secondary" style="padding: 0.5rem 1rem;">View</button></td>
+                    </tr>
+                </tbody>
+            </table>
+        </main>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        if (localStorage.getItem('omolola_admin_auth') !== 'true') {
+            window.location.href = 'index.html';
+        }
+        function logout() {
+            localStorage.removeItem('omolola_admin_auth');
+            window.location.href = '../index.html';
+        }
+    </script>
+</body>
+</html>
